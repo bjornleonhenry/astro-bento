@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import PostFeedLayout from "../../layouts/PostFeedLayout.astro";
+import "../../styles/global.css";
+import { fade } from "astro:transitions";
+
+const posts = (await getCollection("posts"))?.sort(
+  (blogEntryA, blogEntryB) =>
+    (blogEntryB.data.pubDate || new Date()).getTime() -
+    (blogEntryA.data.pubDate || new Date()).getTime()
+);
+
+// Extract all tags and remove duplicates
+const allTags = posts
+  ?.filter((post) => post.data.tags && post.data.tags.length > 0)
+  .flatMap((post) => post.data.tags);
+const uniqueTags = [...new Set(allTags.sort())];
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<PostFeedLayout title="bjorn-leon-henry: tags" description="">
+  <div
+    class="w-screen h-full flex flex-col justify-start items-start max-w-2xl mx-auto p-2 md:py-5"
+  >
+    <div class="h-full"></div>
+
+    <h1 class="text-5xl f-light mb-2 text-neutral-100">tags:</h1>
+    <div class="f-light mb-4 text-neutral-100/50">All taggs used in posts</div>
+    <div class="text-neutral-100 w-full">
+      <div class="grid grid-cols-2 lg:grid-cols-3 w-full gap-2 w-full">
+        {
+          uniqueTags.map((tag) => (
+            <a
+              transition:animate={fade({ duration: "0.75s" })}
+              href={`/tags/${tag}`}
+              class="border border-gray-500 hover:border-neutral-100/70 p-2 rounded-lg flex justify-center items-center w-full text-center transition-transform duration-100 md:hover:scale-[102%]"
+            >
+              <div class="flex-1">{tag}</div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</PostFeedLayout>

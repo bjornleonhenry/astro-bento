@@ -1,0 +1,46 @@
+---
+import {
+  getCurrentTimeInLosAngeles,
+  formatTimeForLosAngeles,
+} from "../lib/helpers";
+import Card from "./Card/index.astro";
+---
+
+<script>
+  import { onCleanup, onMount } from "solid-js";
+  import { formatTimeForLosAngeles } from "../lib/helpers";
+
+  let interval: ReturnType<typeof setInterval>;
+
+  function updateClock() {
+    const timeDisplay = document.getElementById("timeDisplay");
+    const now = new Date();
+
+    if (timeDisplay) {
+      timeDisplay.textContent = formatTimeForLosAngeles(now);
+      timeDisplay.setAttribute("datetime", now.toISOString());
+    }
+  }
+
+  onMount(() => {
+    interval = setInterval(updateClock, 1000);
+  });
+
+  onCleanup(() => {
+    clearInterval(interval);
+  });
+</script>
+
+<Card colSpan="lg:col-span-2" rowSpan="md:row-span-2" title="Local Time:">
+  <!-- <div class="text-xl md:text-lg lg:text-2xl text-neutral-100/70">
+    Boulder, CO, CA.
+  </div> -->
+
+  <time
+    datetime=""
+    id="timeDisplay"
+    class="text-3xl md:text-2xl lg:text-5xl flex f-bold h-full mt-5"
+  >
+    {formatTimeForLosAngeles(getCurrentTimeInLosAngeles())}
+  </time>
+</Card>

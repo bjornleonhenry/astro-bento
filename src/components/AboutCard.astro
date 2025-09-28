@@ -1,0 +1,29 @@
+---
+import Card from "./Card/index.astro";
+import Technologies from "./Technologies.astro";
+---
+
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About me">
+  <div class="flex flex-col gap-2">
+    <p class="text-sm text-neutral-100/70 f-light">From Boulder, Colorado. USA
+    Located in Bangkok, Thailand</p>
+    
+
+    <div class="flex flex-col">
+      <div class="text-xl f-bold m-0 z-20 mt-5">My Skills</div>
+
+      <p class="text-sm text-neutral-100/70 f-light">
+        These are my go-to technologies to use. Scroll through and click on a
+        technology to view related projects:
+      </p>
+    </div>
+
+    <Technologies />
+
+    <p class="text-sm text-neutral-100/70 f-light">
+      While I do have preferred technologies I like to use, I strive to choose
+      the best tool for the job, even if it's not in my list. My goal is always
+      to find the right solution for each project.
+    </p>
+  </div>
+</Card>

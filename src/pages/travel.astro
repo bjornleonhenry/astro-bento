@@ -1,0 +1,48 @@
+---
+import Globe from "../components/Globe";
+import BasicLayout from "../layouts/BasicLayout.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+
+  const sequence = [
+    [
+      ".loaderRef",
+      { opacity: [1, 0], pointerEvents: "none" },
+      { easing: "ease-out" },
+    ],
+  ];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+
+  const sequence = [
+    [
+      ".loaderRef", // The CSS selector for the element(s) to animate
+      { opacity: [1, 0], pointerEvents: "none" }, // Starting and ending states
+      {
+        easing: "ease-out", // The easing function
+        duration: 2, // Duration in seconds
+      },
+    ],
+  ];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<BasicLayout
+  title="bjorn-leon-henry: visited countries"
+  description="A 3d globe showing countries that I have visited so far"
+  page="travel"
+>
+  <Navbar />
+
+  <div class="w-full flex justify-center">
+    <Globe client:load />
+  </div>
+</BasicLayout>

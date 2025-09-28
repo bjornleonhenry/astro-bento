@@ -1,0 +1,220 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  page?: "travel" | "blog";
+  slug?: string | undefined;
+  frontmatter?: {
+    file: string;
+    url: string | undefined;
+  } & {
+    title: string;
+    description: string;
+    pubDate: string;
+    minutesRead: string;
+  };
+}
+
+const { title, description, page, slug, frontmatter } = Astro.props;
+const image =
+  page === "travel"
+    ? `${Astro.url.origin}/globe_preview.webp"`
+    : `${Astro.url.origin}/og-image.png`;
+
+const schema =
+  page !== "blog"
+    ? {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        name: "Benti",
+        url: "https://bjorn-leon-henry.github.io",
+        sameAs: [
+          "https://www.linkedin.com/",
+          "https://github.com/bjornleonhenry",
+        ],
+        image: "https://github.com/bjornleonhenry.png",
+        jobTitle: "Freelance Frontend Developer",
+        worksFor: {
+          "@type": "Organization",
+          name: "Self-Employed",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Boulder, CO, CA",
+            addressCountry: "US",
+          },
+        },
+        nationality: {
+          "@type": "Country",
+          name: "USA",
+        },
+      }
+    : {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `https://bjorn-leon-henry.github.io/blog/${slug}`,
+        },
+        headline: frontmatter?.title || title,
+        description: frontmatter?.description || title,
+        image: "https://github.com/bjornleonhenry.png", //TODO: dynamic
+        author: {
+          "@type": "Person",
+          name: "Bento",
+          url: "https://bjorn-leon-henry.github.io",
+          sameAs: [
+            "https://www.linkedin.com/",
+            "https://github.com/bjornleonhenry",
+          ],
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "@bjornleonhenry",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://github.com/bjornleonhenry",
+          },
+        },
+        datePublished: frontmatter?.pubDate || new Date().toISOString(),
+        dateModified: frontmatter?.pubDate || new Date().toISOString(),
+      };
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title || "Bjorn Leon Henry"}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="/favicon/sitemap-index.xml" />
+    <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.origin} />
+    <meta
+      property="og:image"
+      content={image || "https://github.com/bjornleonhenry.png"}
+    />
+    <!-- Basic Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content={image || "https://github.com/bjornleonhenry.png"}
+    />
+
+    <link rel="preconnect" href="https://cdn.fontshare.com" />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Light.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script
+      defer
+      src="https://analytics.us.umami.is/script.js"
+      data-website-id="bfea2621-8ce2-44be-8d0a-16a7f5bdae37"></script>
+
+    <style>
+      /* @view-transition {
+        navigation: auto;
+      } */
+    </style>
+  </head>
+
+  <body class="bg-darkslate-400 flex flex-col justify-center items-center">
+    <slot name="loader" />
+    <slot />
+  </body>
+  <style is:global>
+    @font-face {
+      font-family: "Ubuntu";
+      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype-variations");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000;
+    }
+    @font-face {
+      font-family: "Ubuntu-Bold";
+      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype-variations");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000;
+    }
+    @font-face {
+      font-family: "Ubuntu-Light";
+      src: url("/fonts/Ubuntu-Light.ttf") format("truetype-variations");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000;
+    }
+    body {
+      margin: 0;
+      font-family: "Ubuntu", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Ubuntu-Bold", sans-serif;
+    }
+    p {
+      font-family: "Ubuntu-light";
+      line-height: 1.75;
+    }
+
+    b {
+      font-family: "Ubuntu-Bold";
+      font-weight: 700 !important;
+    }
+
+    .f-bold {
+      font-family: "Ubuntu-Bold";
+    }
+
+    .f-light {
+      font-family: "Ubuntu-Light";
+    }
+
+    /* Lists within .prose */
+    .prose ul,
+    .prose ol {
+      margin-left: 2em;
+      margin-bottom: 1em;
+    }
+    .prose ul {
+      list-style-type: disc;
+    }
+    .prose ol {
+      list-style-type: decimal;
+    }
+  </style>
+</html>

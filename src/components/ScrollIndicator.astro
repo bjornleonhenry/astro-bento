@@ -1,0 +1,33 @@
+---
+// This component will render the scroll indicator and include the necessary JavaScript to update its width.
+---
+
+<div id="scroll-indicator"></div>
+
+<style>
+  #scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    border-radius: 10px;
+    background-color: #d4d4d4;
+    z-index: 1000;
+    transition: width 0.1s;
+  }
+</style>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    const scrollIndicator = document.getElementById("scroll-indicator");
+    if (scrollIndicator) {
+      scrollIndicator.style.width = scrolled + "%";
+    }
+  });
+</script>

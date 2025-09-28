@@ -1,0 +1,69 @@
+---
+import Card from "./Card/index.astro";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
+import { LINKS } from "../lib/constants";
+import Tooltip from "./Tooltip/index";
+---
+
+<Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
+  <div class="flex w-full h-full gap-5">
+    <div class="flex flex-col justify-between md:max-h-[300px] gap-4 z-50">
+      <div class="flex flex-col h-full">
+        <h6 class="text-sm f-light m-0 text-neutral-100/50">welcome</h6>
+        <p
+          class="m-0 f-light text-xl lg:text-2xl w-2/3 lg:w-full f-light drop-shadow-lg"
+        >
+          I'm <b>Bjorn</b>, a fullstack software engineer & open-source
+          contributor with a strong focus in Generative AI, Web Apps, Linux & Unix
+          systems, Penetration Testing, Python Automation, Cryptocurrencies, Data Extraction, and Web Scraping.
+         
+        </p>
+      </div>
+      <div class="flex gap-2 md:gap-4">
+        <a href={LINKS.github} aria-label="github profile" target="_blank">
+          <Button aria-label="github profile">
+            <Icon name="ri:github-fill" class="h-7 w-7" />
+            <span class="sr-only">GitHub Profile</span>
+          </Button>
+        </a>
+        <a href={LINKS.linkedin} aria-label="linkeding profile" target="_blank">
+          <Button aria-label="linkedin profile">
+            <Icon name="ri:linkedin-box-fill" class="h-7 w-7" />
+            <span class="sr-only">Linkedin Profile</span>
+          </Button>
+        </a>
+        <a href={LINKS.medium} aria-label="dribble profile" target="_blank">
+          <Button aria-label="dribble profile">
+            <Icon name="ri:medium-fill" class="h-7 w-7" />
+            <span class="sr-only">Medium Profile</span>
+          </Button>
+        </a>
+        <Tooltip client:visible>
+          <Button aria-label="easter egg btn">
+            <Icon name="ri:emotion-laugh-line" class="h-7 w-7" />
+            <span class="sr-only">Easter egg button</span>
+          </Button>
+        </Tooltip>
+      </div>
+    </div>
+    <!-- <Image
+      width="300"
+      height="300"
+      src="/me.webp"
+      class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
+    /> -->
+
+    <img
+      src="https://github.com/bjornleonhenry.png"
+      class="absolute right-0 bottom-0 z-[-1] object-left opacity-70 object-cover w-1/2 sm:w-1/3 lg:w-auto h-full lg:relative sm:opacity-100 lg:rounded-lg lg:border md:group-hover:border-neutral-100/70 border-gray-500 border-l-none"
+      alt="github"
+    />
+
+    <div
+      class="absolute z-0 bottom-0 right-0 bg-gradient-to-r from-darkslate-400 to-none h-full w-1/2 sm:w-1/3 md:w-1/3 lg:w-[21.75rem]
+       h-full lg:rounded-lg"
+    >
+    </div>
+  </div>
+</Card>

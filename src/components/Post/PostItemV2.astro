@@ -1,0 +1,141 @@
+---
+import { formatDate } from "../../lib/helpers";
+import { formatTag } from "../../lib/helpers";
+import { gsap } from "gsap";
+
+interface Props {
+  title: string;
+  image: string;
+  date: Date;
+  url: string;
+  category: string;
+  tags: string[];
+  description: string;
+}
+
+const { title, description, date, url, category, tags, image } = Astro.props;
+---
+
+<li class="w-full post-item">
+  <div
+    class="text-sm overflow-hidden md:text-base decoration-none flex flex-col justify-between text-neutral-100 ease-in-out transition-colors border-gray-700 hover:border-gray-500 border-[1px] my-2 rounded-lg"
+  >
+    <div class="flex w-full h-full group">
+      <div class="w-1/3 shrink-0 rounded transition-all duration-300">
+        <!-- Flex for proper height management -->
+        <a href={`/${category}/${url}`} class="relative block w-full h-full">
+          <img
+            src={image}
+            alt={title}
+            class="object-cover w-full h-full rounded rounded-l-lg border-gray-500"
+            decoding="async"
+            loading="eager"
+          />
+          <div
+            class="absolute top-0 left-0 bg-gradient-to-l from-darkslate-400 to-none h-full w-full"
+          >
+          </div>
+        </a>
+      </div>
+
+      <div class="w-2/3 flex flex-col justify-between p-2 md:p-4">
+        <div>
+          <div class="flex items-center justify-between w-full">
+            <time
+              class="text-xs text-neutral-100/70"
+              datetime={date.toISOString()}
+              data-date={date.toISOString()}
+            >
+              {formatDate(date)}
+            </time>
+            <a href={`/${category}`}>
+              <div
+                class="border border-gray-500 px-2 rounded capitalize text-sm text-neutral-100/70"
+              >
+                {category}
+              </div>
+            </a>
+          </div>
+
+          <div class="my-5 post-title">
+            <a href={`/${category}/${url}`}>
+              <div
+                class="inline-block f-bold text-lg lg:text-2xl transition-all duration-300"
+              >
+                {title}
+              </div>
+            </a>
+            <a href={`/${category}/${url}`}>
+              <div
+                class="text-neutral-100/70 md:group-hover:text-neutral-100 transition-all duration-300 f-light line-clamp-2"
+              >
+                {description}
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-neutral-100 mb-2">
+            <a href="/tags">Tags:</a>
+          </div>
+          <div class="flex gap-1 overflow-scroll">
+            {
+              tags.map((tag) => (
+                <a
+                  href={`/tags/${formatTag(tag)}`}
+                  class="text-sm bg-gray-700 text-neutral-100 rounded px-2 py-1 lowercase whitespace-nowrap"
+                >
+                  #{formatTag(tag)}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style is:global>
+    * {
+      box-sizing: border-box;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+
+  <!-- <script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const postItems = document.querySelectorAll(".post-item");
+      const postTitles = document.querySelectorAll(".post-title");
+
+      postItems.forEach((postItem) => {
+        const postImage = postItem.querySelector("img");
+
+        // Fade in the whole component
+        gsap.fromTo(postItem, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+
+        // Fade in the image with a delay to ensure it starts after the component
+        if (postImage) {
+          gsap.fromTo(
+            postImage,
+            { opacity: 0 },
+            { opacity: 1, duration: 1, delay: 0.25 }
+          );
+        }
+
+        if (postTitles) {
+          gsap.fromTo(
+            postTitles,
+            { opacity: 0 },
+            { opacity: 1, duration: 1, delay: 0 }
+          );
+        }
+      });
+    });
+  </script> -->
+</li>

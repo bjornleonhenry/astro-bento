@@ -1,0 +1,170 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { formatTag } from "../../lib/helpers";
+import "../../styles/global.css";
+import TagsLayout from "../../layouts/TagsLayout.astro";
+import PostItem from "../../components/Post/PostItemV2.astro";
+import Navbar from "../../components/Navbar.astro";
+
+interface Post {
+  slug: string;
+  data: {
+    title: string;
+    description: string;
+    category: string;
+    pubDate: string;
+    tags: string[];
+    image: string;
+  };
+}
+
+type TagRoute = {
+  params: {
+    tag: string;
+  };
+};
+
+export async function getStaticPaths(): Promise<TagRoute[]> {
+  const posts = await getCollection("posts");
+  const tagSet = new Set<string>();
+
+  posts.forEach((post) => {
+    if (Array.isArray(post.data.tags)) {
+      post.data.tags.forEach((tag: string) => {
+        const lowercaseTag = tag.toLowerCase();
+        const urlTag = formatTag(lowercaseTag);
+        tagSet.add(urlTag);
+      });
+    }
+  });
+
+  const tagRoutes: TagRoute[] = Array.from(tagSet).map((tag) => ({
+    params: { tag },
+  }));
+
+  return tagRoutes;
+}
+
+const tagParam: string = Astro.params.tag || "";
+const allPosts: CollectionEntry<"posts">[] = await getCollection("posts");
+
+const pageObjects: Post[] = [];
+
+for (const post of allPosts) {
+  const tags = post.data.tags;
+
+  if (Array.isArray(tags)) {
+    const processedTags = tags.map((tag) => formatTag(tag));
+
+    if (processedTags.includes(formatTag(tagParam))) {
+      const postTitle = String(post.data.title);
+      const postSlug = formatTag(postTitle);
+      const postCategory = String(post.data.category);
+      const postDescription = String(post.data.description);
+      const postPubDate = String(post.data.pubDate);
+      const postImage = String(post.data.image);
+
+      const newPost: Post = {
+        slug: postSlug,
+        data: {
+          title: postTitle,
+          description: postDescription,
+          category: postCategory,
+          pubDate: postPubDate,
+          tags: tags,
+          image: postImage,
+        },
+      };
+
+      pageObjects.push(newPost);
+    }
+  }
+}
+
+pageObjects.sort((a, b) => {
+  return (
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  );
+});
+
+let search: string = "";
+let filteredPosts: Post[] = pageObjects;
+
+function handleSearch(event: Event) {
+  const inputElement = event.target as HTMLInputElement;
+  search = inputElement.value.toLowerCase();
+
+  filteredPosts = pageObjects.filter((post) =>
+    post.data.title.toLowerCase().includes(search)
+  );
+}
+const Content = filteredPosts.map((post) => post);
+---
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const animatePosts = () => {
+    const posts = document.querySelectorAll(".post-item");
+    posts.forEach((post) => {
+      gsap.fromTo(
+        post,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.25,
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: post,
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", animatePosts);
+</script>
+
+<div>
+  <TagsLayout title="bjorn-leon-henry: tags" description="" />
+
+  <Navbar />
+
+  <div
+    class="w-screen h-full flex flex-col justify-start items-start max-w-2xl mx-auto p-2 md:py-5"
+  >
+    <h1 class="text-5xl f-bold mb-2 text-neutral-100">
+      <a href={`/tags`} class="f-light text-neutral-100/70">tag:</a>
+      #{formatTag(tagParam)}
+    </h1>
+    <div class="f-light mb-4 text-neutral-100/50">
+      Other posts tagged with "{tagParam}".
+    </div>
+    <div class="w-full">
+      <ul class="">
+        {
+          Content.map((post) => (
+            <div class="post-item opacity-0">
+              <PostItem
+                title={post.data.title || "No title"}
+                description={post.data.description || "No description"}
+                date={
+                  post.data.pubDate ? new Date(post.data.pubDate) : new Date()
+                }
+                url={post.slug}
+                category={post.data.category || "No category"}
+                tags={post.data.tags || []}
+                image={post.data.image || ""}
+              />
+            </div>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>

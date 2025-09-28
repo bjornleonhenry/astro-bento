@@ -1,0 +1,147 @@
+---
+import { formatDate, formatTag } from "../lib/helpers";
+import type { MarkdownLayoutProps } from "astro";
+import BasicLayout from "./BasicLayout.astro";
+import { Icon } from "astro-icon/components";
+import Navbar from "../components/Navbar.astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  category: string;
+  description: string;
+  pubDate: string;
+  minutesRead: string;
+  image: string;
+  projectURL: string;
+  repoURL: string;
+  tags: string[];
+}>;
+
+const { slug } = Astro.params;
+const { frontmatter } = Astro.props;
+---
+
+<BasicLayout
+  frontmatter={frontmatter}
+  slug={slug}
+  page="blog"
+  title={`Bjorn Leon Henry - ${frontmatter.title}`}
+  description={frontmatter.description}
+>
+  <Navbar />
+
+  <main class="mx-auto max-w-2xl w-full p-2 md:py-5 text-neutral-100">
+    <div
+      class="w-fit px-4 py-1 rounded rounded-b-none border-b-none border border-gray-500"
+    >
+      <a
+        href={`/${frontmatter.category}`}
+        class="text-neutral-100 capitalize text-sm decoration-none"
+      >
+        {frontmatter.category}
+      </a>
+    </div>
+    <div class="border-t border-gray-500">
+      <div class="flex justify-between mt-2 text-neutral-100/50 text-sm">
+        <p>{frontmatter.minutesRead}</p>
+        <p>{formatDate(new Date(frontmatter.pubDate))}</p>
+      </div>
+
+      <div class="text-5xl f-bold mt-2 opacity-0" id="post-title">
+        {frontmatter.title}
+      </div>
+      <div class="text-neutral-100/70 opacity-0" id="post-description">
+        {frontmatter.description}
+      </div>
+
+      <div class="">
+        <div class="mt-5 pb-1 text-neutral-100/50 f-light text-sm">
+          <a
+            href="/tags"
+            class="text-neutral-100/50 f-light decoration-none hover:decoration-none"
+            >Tags:</a
+          >
+        </div>
+
+        <div class="flex gap-1 w-full overflow-scroll mb-2">
+          {
+            frontmatter.tags.map((tag) => (
+              <a
+                href={`/tags/${formatTag(tag)}`}
+                class="no-underline hover:no-underline text-sm bg-gray-700 text-neutral-100 rounded px-2 py-1 lowercase whitespace-nowrap"
+              >
+                #{formatTag(tag)}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <a href={frontmatter.projectURL || "hover:skew-y-12"}>
+        <img
+          src={frontmatter.image}
+          alt=""
+          class="border border-gray-500/50 w-full object-cover h-full opacity-0"
+          id="post-image"
+        />
+      </a>
+    </div>
+
+    <div class="flex items-center gap-2 w-full py-2">
+      {
+        frontmatter.projectURL && (
+          <a href={frontmatter.projectURL} class="w-full group">
+            <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
+              <div class="flex items-center justify-between gap-2">
+                <div>go to app</div>
+                <Icon
+                  name="mdi:login"
+                  class="w-5 h-5 md:group-hover:scale-110 transition-all duration-100"
+                />
+              </div>
+            </button>
+          </a>
+        )
+      }
+      {
+        frontmatter.repoURL && (
+          <a href={frontmatter.repoURL} class="w-full group">
+            <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
+              <div class="flex items-center justify-between gap-2">
+                <div>star on github</div>
+                <Icon
+                  name="mdi:github"
+                  class="w-5 h-5 md:group-hover:scale-110 transition-all duration-100"
+                />
+              </div>
+            </button>
+          </a>
+        )
+      }
+    </div>
+
+    <article
+      class="prose prose-p:text-purple-500 prose-slate prose-invert mb-10 opacity-0"
+      id="post-content"
+    >
+      <slot />
+    </article>
+  </main>
+</BasicLayout>
+
+<style is:global>
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.to("#post-title", { opacity: 1, duration: 0.5 });
+    gsap.to("#post-image", { opacity: 1, duration: 1 });
+    gsap.to("#post-description", { opacity: 1, duration: 1.5 });
+    gsap.to("#post-content", { opacity: 1, delay: 0.25, duration: 0.5 });
+  });
+</script>
