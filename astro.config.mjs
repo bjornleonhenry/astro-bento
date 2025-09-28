@@ -9,6 +9,9 @@ import svelte from "@astrojs/svelte";
 
 import vercel from "@astrojs/vercel/serverless";
 
+import { EventEmitter } from "events";
+EventEmitter.defaultMaxListeners = 20;
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://astro-bento.vercel.app/",
