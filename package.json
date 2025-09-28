@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.5.0",
   "scripts": {
-  "dev": "NODE_OPTIONS='--max-old-space-size=4096 --max-http-header-size=16384' astro dev --host",
-  "fetch-avatar": "node ./scripts/fetch-avatar.js",
-    "start": "NODE_OPTIONS='--max-old-space-size=4096 --max-http-header-size=16384' astro dev --host",
+    "dev": "astro dev --host",
+    "fetch-avatar": "node ./scripts/fetch-avatar.js",
+    "start": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

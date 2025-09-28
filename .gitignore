@@ -25,3 +25,7 @@ pnpm-debug.log*
 /public/resume.pdf
 
 .vercel/
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
