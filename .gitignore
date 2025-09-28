@@ -7,13 +7,15 @@ dist/
 # dependencies
 node_modules/
 
-.netlify/
-
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# deployment
+.vercel/
+.netlify/
 
 # environment variables
 .env
@@ -22,10 +24,13 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# public files
 /public/resume.pdf
-
-.vercel/
-
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml

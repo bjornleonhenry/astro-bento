@@ -11,16 +11,19 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bento.engage-dev.com/",
+  site: "https://astro-bento.vercel.app/",
   integrations: [sitemap(), robotsTxt({
-    sitemap: ["https://bento.engage-dev.com/sitemap-index.xml", "https://bento.engage-dev.com/sitemap-0.xml"]
+    sitemap: ["https://astro-bento.vercel.app/sitemap-index.xml", "https://astro-bento.vercel.app/sitemap-0.xml"]
   }), solidJs(), UnoCSS({
     injectReset: true
   }), icon(), svelte()],
   markdown: {
     remarkPlugins: [remarkReadingTime]
   },
-  output: "server",
+  output: "hybrid",
+  security: {
+    checkOrigin: false
+  },
   adapter: vercel(),
   vite: {
     assetsInclude: "**/*.riv",
