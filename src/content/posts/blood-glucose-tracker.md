@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2023-10-09T00:00:00Z
 title: Blood Glucose Tracker
 description: A glucose monitor tracker built with Sveltekit, TailwindCSS, and DaisyUI.

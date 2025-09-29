@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2024-6-21T12:00:00Z
 title: Unmineable
 description: A simple dashboard to monitor your Unmineable mining rig.

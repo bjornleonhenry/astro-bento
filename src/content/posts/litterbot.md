@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2024-4-22T12:00:00Z
 title: Litterbot
 description: An app for easy control over whisker's litter robot 4.

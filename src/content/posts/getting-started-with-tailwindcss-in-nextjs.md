@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2023-01-01T00:00:00Z
 title: Getting started with TailwindCSS in Next.js
 description: A guide to getting started with TailwindCSS in Next.js.

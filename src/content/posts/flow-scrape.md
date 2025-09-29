@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2025-09-27T12:00:00Z
 title: Flow Scrape
 description: A modern, full-stack SaaS web application for building and executing custom automated workflows, with a focus on web scraping and data processing. Built with Next.js, TypeScript, Prisma.
@@ -17,8 +16,8 @@ tags:
   - Workflow
   - Automation
   - Web Scraping
-projectURL: "https://github.com/bjornleonhenry/flow-scrape"
-repoURL: "https://github.com/bjornleonhenry/flow-scrape"
+projectURL: "https://github.com/bjornleon-henry/flow-scrape"
+repoURL: "https://github.com/bjornleon-henry/flow-scrape"
 ---
 
 ### What's included in flow-scrape?

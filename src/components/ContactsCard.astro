@@ -12,7 +12,7 @@ import { Icon } from "astro-icon/components";
     </header>
     <div class="flex flex-col mt-4">
       <div class="text-neutral-100/70">Contact Details</div>
-
+ 
       <div class="w-full mt-2">
         <a href={`mailto:${LINKS.email}`}>
           <Button>
@@ -30,16 +30,6 @@ import { Icon } from "astro-icon/components";
         <div class="flex flex-col gap-1 w-full">
           <div>
             <a
-              href={LINKS.linkedin}
-              target="_blank"
-              class="flex items-center gap-2 border border-darkslate-100 md:hover:border-gray-500 transition-colors duration-300 py-1 px-2 rounded-lg"
-            >
-              <Icon name="ri:linkedin-fill" class="h-5 w-5" />
-              <div>LinkedIn</div>
-            </a>
-          </div>
-          <div>
-            <a
               href={LINKS.github}
               target="_blank"
               class="flex items-center gap-2 border border-darkslate-100 md:hover:border-gray-500 transition-colors duration-300 py-1 px-2 rounded-lg"
@@ -50,22 +40,32 @@ import { Icon } from "astro-icon/components";
           </div>
           <div>
             <a
-              href={LINKS.medium}
-              target="_blank"
-              class="flex items-center gap-2 border border-darkslate-100 md:hover:border-gray-500 transition-colors duration-300 py-1 px-2 rounded-lg"
-            >
-              <Icon name="ri:medium-fill" class="h-5 w-5" />
-              <div>Medium</div>
-            </a>
-          </div>
-          <div>
-            <a
               href={LINKS.discord}
               target="_blank"
               class="flex items-center gap-2 border border-darkslate-100 md:hover:border-gray-500 transition-colors duration-300 py-1 px-2 rounded-lg"
             >
               <Icon name="ri:discord-fill" class="h-5 w-5" />
               <div>Discord</div>
+            </a>
+          </div>
+          <div>
+            <a
+              href={LINKS.telegram}
+              target="_blank"
+              class="flex items-center gap-2 border border-darkslate-100 md:hover:border-gray-500 transition-colors duration-300 py-1 px-2 rounded-lg"
+            >
+              <Icon name="ri:telegram-fill" class="h-5 w-5" />
+              <div>Telegram</div>
+            </a>
+          </div>
+          <div>
+            <a
+              href={LINKS.linkedin}
+              target="_blank"
+              class="flex items-center gap-2 border border-darkslate-100 md:hover:border-gray-500 transition-colors duration-300 py-1 px-2 rounded-lg"
+            >
+              <Icon name="ri:linkedin-fill" class="h-5 w-5" />
+              <div>Linkedin</div>
             </a>
           </div>
         </div>

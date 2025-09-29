@@ -4,10 +4,12 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
     category: z.string(),
-    tags: z.array(z.string()).optional(),
-    image: z.string().optional(),
+    image: z.string(),
+    tags: z.array(z.string()),
+    projectURL: z.string().optional(),
+    repoURL: z.string().optional(),
     excerpt: z.string().optional(),
   }),
 });

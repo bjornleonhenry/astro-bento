@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2024-2-10T00:00:00Z
 title: GSA RAG
 description: An AI-powered context-aware recommendation system for the GSA Elibrary2.0.

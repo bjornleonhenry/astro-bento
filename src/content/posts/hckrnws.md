@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2024-12-2T12:00:00Z
 title: hckrnws
 description: A Hacker News UI written in Sveltekit, TailwindCSS, and DaisyUI.

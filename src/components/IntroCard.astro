@@ -21,22 +21,22 @@ import Tooltip from "./Tooltip/index";
         </p>
       </div>
       <div class="flex gap-2 md:gap-4">
+        <a href="https://bjornleonhenry.com" aria-label="Homepage" target="_blank">
+          <Button aria-label="homepage profile">
+            <Icon name="ri:global-fill" class="h-7 w-7" />
+            <span class="sr-only">Homepage Profile</span>
+          </Button>
+        </a>
         <a href={LINKS.github} aria-label="github profile" target="_blank">
           <Button aria-label="github profile">
             <Icon name="ri:github-fill" class="h-7 w-7" />
             <span class="sr-only">GitHub Profile</span>
           </Button>
         </a>
-        <a href={LINKS.linkedin} aria-label="linkeding profile" target="_blank">
-          <Button aria-label="linkedin profile">
-            <Icon name="ri:linkedin-box-fill" class="h-7 w-7" />
-            <span class="sr-only">Linkedin Profile</span>
-          </Button>
-        </a>
-        <a href={LINKS.medium} aria-label="dribble profile" target="_blank">
-          <Button aria-label="dribble profile">
-            <Icon name="ri:medium-fill" class="h-7 w-7" />
-            <span class="sr-only">Medium Profile</span>
+        <a href="https://app.slack.com" aria-label="linkeding profile" target="_blank">
+          <Button aria-label="slack profile"> 
+            <Icon name="ri:slack-fill" class="h-7 w-7" />
+            <span class="sr-only">Slack Profile</span>
           </Button>
         </a>
         <Tooltip client:visible>

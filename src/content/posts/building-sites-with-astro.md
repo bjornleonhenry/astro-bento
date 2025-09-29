@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2023-01-02T00:00:00Z
 title: Building Sites with Astro
 description: Using Astro to build fast, lean, and modern websites.

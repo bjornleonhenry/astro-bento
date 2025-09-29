@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2023-02-01T00:00:00Z
 title: FastAPI for Python Development
 description: A guide to getting started with the Fast API.

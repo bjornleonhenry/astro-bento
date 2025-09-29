@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2023-2-10T00:00:00Z
 title: Rugged Development
 description: An ultra-modern landing page for a rugged computing  company.

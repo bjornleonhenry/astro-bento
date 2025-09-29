@@ -19,6 +19,9 @@ type Props = MarkdownLayoutProps<{
 
 const { slug } = Astro.params;
 const { frontmatter } = Astro.props;
+
+// Try to get data from remarkPluginFrontmatter if frontmatter is missing custom fields
+const actualFrontmatter = frontmatter || Astro.locals?.remarkPluginFrontmatter || {};
 ---
 
 <BasicLayout
@@ -90,13 +93,13 @@ const { frontmatter } = Astro.props;
 
     <div class="flex items-center gap-2 w-full py-2">
       {
-        frontmatter.projectURL && (
-          <a href={frontmatter.projectURL} class="w-full group">
+        frontmatter.category === 'projects' && (
+          <a href={`https://github.com/bjornleon-henry/${slug}`} class="w-full group">
             <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
               <div class="flex items-center justify-between gap-2">
                 <div>go to app</div>
                 <Icon
-                  name="mdi:login"
+                  name="ri:login-circle-fill"
                   class="w-5 h-5 md:group-hover:scale-110 transition-all duration-100"
                 />
               </div>
@@ -105,13 +108,13 @@ const { frontmatter } = Astro.props;
         )
       }
       {
-        frontmatter.repoURL && (
-          <a href={frontmatter.repoURL} class="w-full group">
+        frontmatter.category === 'projects' && (
+          <a href={`https://github.com/bjornleon-henry/${slug}`} class="w-full group">
             <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
               <div class="flex items-center justify-between gap-2">
                 <div>star on github</div>
                 <Icon
-                  name="mdi:github"
+                  name="ri:github-fill"
                   class="w-5 h-5 md:group-hover:scale-110 transition-all duration-100"
                 />
               </div>

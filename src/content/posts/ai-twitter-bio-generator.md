@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2023-02-01T00:00:00Z
 title: AI Twitter Bio Generator
 description: A Twitter bio generator built with Next.js 13, OpenAI's ChatGPT API, and TailwindCSS.

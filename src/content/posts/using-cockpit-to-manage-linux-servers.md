@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/PostLayout.astro"
 pubDate: 2024-6-01T12:00:00Z
 title: Using Cockpit to manage Raspberry Pis and other Linux servers
 description: Learn how to streamline environment variable management in Linux with Direnv.
