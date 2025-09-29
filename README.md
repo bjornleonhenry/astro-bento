@@ -2,6 +2,33 @@
 
 ## A personal portfolio website made using `Astro`.
 
+## Requirements
+
+- Node.js 22 or higher
+- pnpm
+
+## Setup
+
+1. Install Node.js 22:
+   ```bash
+   # Using nvm (recommended)
+   nvm install 22
+   nvm use 22
+
+   # Or download binaries and add to PATH
+   export PATH="$HOME/bin:$PATH"
+   ```
+
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Start development server:
+   ```bash
+   pnpm run dev
+   ```
+
 ## Features
 
 - Modern and Minimal bento-like, sleek UI Design

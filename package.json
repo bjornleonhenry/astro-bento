@@ -2,20 +2,24 @@
   "name": "astro-bento",
   "type": "module",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "astro dev --host",
-    "fetch-avatar": "node ./scripts/fetch-avatar.js",
-    "start": "astro dev --host",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fetch-avatar": "node ./scripts/fetch-avatar.js",
+    "check-node": "node -e \"const v = process.version; if (!v.includes('v22')) { console.error('Error: Node.js 22+ required. Current version:', v); process.exit(1); }\"",
+    "setup-node": "echo 'To use Node 22, run: export PATH=\"$HOME/bin:$PATH\" (if installed locally) or use nvm: nvm use 22'"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/solid-js": "^5.1.1",
-    "@astrojs/svelte": "^7.2.0",
     "@astrojs/vercel": "^8.2.8",
     "@iconify-json/carbon": "^1.2.13",
     "@iconify-json/cib": "^1.2.3",
@@ -39,19 +43,18 @@
     "motion": "^10.18.0",
     "reading-time": "^1.5.0",
     "solid-js": "^1.9.9",
-    "svelte": "^4.2.20",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
-    "@unocss/astro": "^0.59.4",
-    "@unocss/postcss": "^0.59.4",
-    "@unocss/preset-uno": "^0.59.4",
-    "@unocss/reset": "^0.59.4",
+    "@unocss/astro": "^66.5.2",
+    "@unocss/postcss": "^66.5.2",
+    "@unocss/preset-uno": "^66.5.2",
+    "@unocss/reset": "^66.5.2",
     "autoprefixer": "^10.4.19",
     "markdown-it": "^14.1.0",
     "motion": "^10.17.0",
     "sanitize-html": "^2.17.0",
-    "unocss": "^0.59.4"
+    "unocss": "^66.5.2"
   }
 }

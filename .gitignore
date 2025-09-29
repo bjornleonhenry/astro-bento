@@ -1,5 +1,7 @@
 # development
 .codacy/
+.github/instructions/
+.nvmrc
 
 # build output
 dist/
@@ -37,3 +39,4 @@ pnpm-debug.log*
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
+pnpm-workspace.yaml
