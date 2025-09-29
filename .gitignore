@@ -51,3 +51,4 @@ pnpm-workspace.yaml
 # .md files
 VSCODE.md
 ASTRO.md
+.vercel
