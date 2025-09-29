@@ -8,7 +8,6 @@ interface Props {
   frontmatter?: Record<string, any>;
 }
 
-import SpeedInsights from '@vercel/speed-insights/astro';
 const { title, description, page, slug, frontmatter } = Astro.props;
 const image =
   page === "travel"
@@ -413,7 +412,7 @@ const schema =
         }, 3000);
       })();
     </script>
-  <SpeedInsights />
+
   </body>  
   <style is:global>
     @font-face {

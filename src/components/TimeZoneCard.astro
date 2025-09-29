@@ -9,25 +9,59 @@ import Card from "./Card/index.astro";
 <script>
   import { onCleanup, onMount } from "solid-js";
   import { formatTimeForLosAngeles } from "../lib/helpers";
-
-  let interval: ReturnType<typeof setInterval>;
+  let interval: ReturnType<typeof setInterval> | undefined;
+  let lastText = "";
 
   function updateClock() {
-    const timeDisplay = document.getElementById("timeDisplay");
-    const now = new Date();
+    if (typeof document === "undefined") return;
+    if (document.hidden) return; // don't update while page is hidden
 
-    if (timeDisplay) {
-      timeDisplay.textContent = formatTimeForLosAngeles(now);
-      timeDisplay.setAttribute("datetime", now.toISOString());
+    const el = document.getElementById("timeDisplay");
+    if (!el) return;
+
+    const now = new Date();
+    const nextText = formatTimeForLosAngeles(now);
+
+    // Only mutate the DOM if the displayed text actually changes
+    if (nextText !== lastText) {
+      el.textContent = nextText;
+      el.setAttribute("datetime", now.toISOString());
+      lastText = nextText;
     }
   }
 
+  function startClock() {
+    if (!interval) {
+      updateClock();
+      interval = setInterval(updateClock, 1000);
+    }
+  }
+
+  function stopClock() {
+    if (interval) {
+      clearInterval(interval);
+      interval = undefined;
+    }
+  }
+
+  function handleVisibilityChange() {
+    if (typeof document === "undefined") return;
+    if (document.hidden) stopClock();
+    else startClock();
+  }
+
   onMount(() => {
-    interval = setInterval(updateClock, 1000);
+    if (typeof document !== "undefined") {
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+      handleVisibilityChange();
+    }
   });
 
   onCleanup(() => {
-    clearInterval(interval);
+    stopClock();
+    if (typeof document !== "undefined") {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    }
   });
 </script>
 
