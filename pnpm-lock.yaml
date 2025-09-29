@@ -24,7 +24,7 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(@types/node@24.5.2)(jiti@2.6.0)(solid-js@1.9.9)(yaml@2.8.1)
       '@astrojs/vercel':
-        specifier: ^8.2.8
+        specifier: ^8.0.4
         version: 8.2.8(astro@5.14.1(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1))(rollup@4.52.3)
       '@iconify-json/carbon':
         specifier: ^1.2.13
