@@ -28,6 +28,7 @@ const { title, body, colSpan, rowSpan, href, colorText, height } = Astro.props;
       <a
         href={href}
         class={`h-full w-full transition-colors duration-500 ${colorText || ""}`}
+        aria-label={title ? `View ${title.toLowerCase()}` : "View details"}
       >
         <Icon
           name="ri:arrow-right-up-line"
