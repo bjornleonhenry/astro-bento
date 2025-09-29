@@ -107,46 +107,88 @@ const schema =
     />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-    <style is:global>
-    @font-face {
-      font-family: "Ubuntu";
-      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype");
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-      font-weight: 100 1000;
-    }
-    @font-face {
-      font-family: "Ubuntu-Bold";
-      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-      font-weight: 100 1000;
-    }
-    @font-face {
-      font-family: "Ubuntu-Light";
-      src: url("/fonts/Ubuntu-Light.ttf") format("truetype");
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-      font-weight: 100 1000;
-    }
+    <style>
+      /* Prevent flash of unstyled content - production-ready approach */
+      .content-hidden {
+        display: none !important;
+      }
+      .content-visible {
+        display: block;
+      }
 
-    /* Hide content until fonts/styles are ready to avoid FOUC */
-    .content-hidden {
-      display: none !important;
-    }
+      /* Basic layout and colors matching final design */
+      body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+        font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
 
-    .content-visible {
-      display: block !important;
-    }
+      /* Essential UnoCSS-like styles for flash prevention */
+      .bg-darkslate-400 {
+        background-color: #1a1a1a;
+      }
 
-    body {
-      margin: 0;
-      font-family: "Ubuntu", sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
+      .text-neutral-100 {
+        color: #ffffff;
+      }
+
+      .text-neutral-100\/50 {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .border-gray-500 {
+        border-color: #6b7280;
+      }
+
+      .border-t {
+        border-top-width: 1px;
+      }
+
+      .border-b-none {
+        border-bottom-width: 0;
+      }
+
+      .rounded {
+        border-radius: 0.25rem;
+      }
+
+      .rounded-b-none {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .opacity-0 {
+        opacity: 0;
+      }
+
+      .opacity-1 {
+        opacity: 1;
+      }
+
+      /* Layout utilities */
+      .flex {
+        display: flex;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
       .mx-auto {
         margin-left: auto;
         margin-right: auto;
@@ -299,8 +341,6 @@ const schema =
       type="font/ttf"
       crossorigin="anonymous"
     />
-    
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5d6a594d-a1c0-49ab-ac5f-0947d36c11c5"></script>
   </head>
 
   <body class="bg-darkslate-400 flex flex-col justify-center items-center content-hidden">
@@ -353,17 +393,17 @@ const schema =
             if (doc.readyState === 'loading') {
               doc.addEventListener('DOMContentLoaded', function () {
                 console.log('FOUC: DOMContentLoaded fired');
-                setTimeout(showContent, 200);
+                setTimeout(showContent, 100);
               });
             } else {
               console.log('FOUC: Document already loaded');
-              setTimeout(showContent, 200);
+              setTimeout(showContent, 100);
             }
           }
         } catch (e) {
           console.warn('FOUC: script error', e);
           // Ensure content shows eventually
-          setTimeout(showContent, 2000);
+          setTimeout(showContent, 3000);
         }
 
         // Safety fallback - show content after 3 seconds regardless
@@ -375,6 +415,74 @@ const schema =
     </script>
   <SpeedInsights />
   </body>  
-  </SpeedInsights />
-  </body>
+  <style is:global>
+    @font-face {
+      font-family: "Ubuntu";
+      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000;
+    }
+    @font-face {
+      font-family: "Ubuntu-Bold";
+      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000;
+    }
+    @font-face {
+      font-family: "Ubuntu-Light";
+      src: url("/fonts/Ubuntu-Light.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000;
+    }
+    body {
+      margin: 0;
+      font-family: "Ubuntu", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Ubuntu-Bold", sans-serif;
+    }
+    p {
+      font-family: "Ubuntu-light";
+      line-height: 1.75;
+    }
+
+    b {
+      font-family: "Ubuntu-Bold";
+      font-weight: 700 !important;
+    }
+
+    .f-bold {
+      font-family: "Ubuntu-Bold";
+    }
+
+    .f-light {
+      font-family: "Ubuntu-Light";
+    }
+
+    /* Lists within .prose */
+    .prose ul,
+    .prose ol {
+      margin-left: 2em;
+      margin-bottom: 1em;
+    }
+    .prose ul {
+      list-style-type: disc;
+    }
+    .prose ol {
+      list-style-type: decimal;
+    }
+  </style>
 </html>
