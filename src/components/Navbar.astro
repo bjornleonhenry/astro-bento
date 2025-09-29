@@ -8,20 +8,6 @@ import { Icon } from "astro-icon/components";
 import ScrollIndicator from "./ScrollIndicator.astro";
 ---
 
-<script>
-  function customBack() {
-    const homePage = "/"; // Define the home page URL
-    const previousURL = document.referrer; // Gets the URL of the previous page
-
-    // Check if the previous URL is the home page
-    if (previousURL.includes(homePage)) {
-      window.location.href = homePage; // Navigate with reload
-    } else {
-      history.back(); // Use the standard back navigation
-    }
-  }
-</script>
-
 <div
   transition:animate="none"
   class="sticky top-0 w-full max-w-2xl mx-auto px-2 bg-darkslate-400 z-50 border-b border-b-[0.1px] border-gray-500 relative"

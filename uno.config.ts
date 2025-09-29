@@ -4,6 +4,7 @@ export default defineConfig({
   content: {
     filesystem: ["**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}"],
   },
+  details: false,
   theme: {
     boxShadow: {
       custom: `1px 1px 0px`,

@@ -18,33 +18,6 @@ interface Post {
   };
 }
 
-type TagRoute = {
-  params: {
-    tag: string;
-  };
-};
-
-export async function getStaticPaths(): Promise<TagRoute[]> {
-  const posts = await getCollection("posts");
-  const tagSet = new Set<string>();
-
-  posts.forEach((post) => {
-    if (Array.isArray(post.data.tags)) {
-      post.data.tags.forEach((tag: string) => {
-        const lowercaseTag = tag.toLowerCase();
-        const urlTag = formatTag(lowercaseTag);
-        tagSet.add(urlTag);
-      });
-    }
-  });
-
-  const tagRoutes: TagRoute[] = Array.from(tagSet).map((tag) => ({
-    params: { tag },
-  }));
-
-  return tagRoutes;
-}
-
 const tagParam: string = Astro.params.tag || "";
 const allPosts: CollectionEntry<"posts">[] = await getCollection("posts");
 
