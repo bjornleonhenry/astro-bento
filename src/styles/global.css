@@ -1,4 +1,13 @@
 
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('/fonts/Ubuntu-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 :root {
   --color-gray-50: #FAFAFA;
   --color-gray-100: #F5F5F5;
