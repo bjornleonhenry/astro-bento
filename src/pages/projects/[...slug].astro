@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
 
 export const prerender = true;
 
@@ -29,7 +30,9 @@ if (entry === undefined) {
 const { Content } = await entry.render();
 ---
 
-<Content />
+<PostLayout frontmatter={entry.data} slug={slug}>
+  <Content />
+</PostLayout>
 
 <style is:global>
   h1,

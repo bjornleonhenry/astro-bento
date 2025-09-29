@@ -40,3 +40,7 @@ yarn.lock
 package-lock.json
 pnpm-lock.yaml
 pnpm-workspace.yaml
+
+# .md files
+VSCODE.md
+ASTRO.md

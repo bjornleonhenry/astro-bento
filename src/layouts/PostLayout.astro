@@ -47,10 +47,10 @@ const { frontmatter } = Astro.props;
         <p>{formatDate(new Date(frontmatter.pubDate))}</p>
       </div>
 
-      <div class="text-5xl f-bold mt-2 opacity-0" id="post-title">
+      <div class="text-5xl f-bold mt-2 opacity-0" id="post-title" aria-hidden="true">
         {frontmatter.title}
       </div>
-      <div class="text-neutral-100/70 opacity-0" id="post-description">
+      <div class="text-neutral-100/70 opacity-0" id="post-description" aria-hidden="true">
         {frontmatter.description}
       </div>
 
@@ -83,6 +83,7 @@ const { frontmatter } = Astro.props;
           alt=""
           class="border border-gray-500/50 w-full object-cover h-full opacity-0"
           id="post-image"
+          aria-hidden="true"
         />
       </a>
     </div>
@@ -123,6 +124,7 @@ const { frontmatter } = Astro.props;
     <article
       class="prose prose-p:text-purple-500 prose-slate prose-invert mb-10 opacity-0"
       id="post-content"
+      aria-hidden="true"
     >
       <slot />
     </article>
@@ -139,9 +141,34 @@ const { frontmatter } = Astro.props;
   import { gsap } from "gsap";
 
   document.addEventListener("DOMContentLoaded", () => {
-    gsap.to("#post-title", { opacity: 1, duration: 0.5 });
-    gsap.to("#post-image", { opacity: 1, duration: 1 });
-    gsap.to("#post-description", { opacity: 1, duration: 1.5 });
-    gsap.to("#post-content", { opacity: 1, delay: 0.25, duration: 0.5 });
+    gsap.to("#post-title", {
+      opacity: 1,
+      duration: 0.5,
+      onComplete: () => {
+        document.getElementById("post-title")?.removeAttribute("aria-hidden");
+      }
+    });
+    gsap.to("#post-image", {
+      opacity: 1,
+      duration: 1,
+      onComplete: () => {
+        document.getElementById("post-image")?.removeAttribute("aria-hidden");
+      }
+    });
+    gsap.to("#post-description", {
+      opacity: 1,
+      duration: 1.5,
+      onComplete: () => {
+        document.getElementById("post-description")?.removeAttribute("aria-hidden");
+      }
+    });
+    gsap.to("#post-content", {
+      opacity: 1,
+      delay: 0.25,
+      duration: 0.5,
+      onComplete: () => {
+        document.getElementById("post-content")?.removeAttribute("aria-hidden");
+      }
+    });
   });
 </script>
