@@ -16,7 +16,7 @@ tags:
   - Workflow
   - Automation
   - Web Scraping
-projectURL: "https://github.com/bjornleon-henry/flow-scrape"
+projectURL: "https://github.com/bjornleonhenry/flow-scrape"
 repoURL: "https://github.com/bjornleon-henry/flow-scrape"
 ---
 
