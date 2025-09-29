@@ -1,3 +1,10 @@
+# Github and CI/CD
+.github
+
+# backup files
+.backup/
+*.bak**
+
 # development
 .codacy/
 .github/instructions/
