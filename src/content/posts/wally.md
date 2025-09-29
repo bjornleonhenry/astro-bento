@@ -5,7 +5,7 @@ title: Wally
 description: A simple, easy-to-use bitcoin wallet generator.
 excerpt: hello world
 category: projects
-image: /images/wally3.png
+image: /images/wally3.webp
 tags:
   - Next.js
   - React
@@ -26,7 +26,7 @@ tags:
   - Web
   - Git
   - GitHub
-projectURL: "https://wally-btc.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/wally.git"
 repoURL: "https://github.com/bjornleonhenry/wally.git"
 ---
 

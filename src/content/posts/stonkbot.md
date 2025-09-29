@@ -5,7 +5,7 @@ title: StonkBot
 description: An AI-powered financial data and sentiment engine. Built using SvelteKit, Vercel's AI SDK, OpenAI, TailwindCSS, and DaisyUI.
 excerpt: hello world
 category: projects
-image: /images/stonkbot-ui.png
+image: /images/stonkbot-ui.webp
 tags:
   - Svelte
   - Sveltekit
@@ -25,7 +25,7 @@ tags:
   - Web
   - Git
   - GitHub
-projectURL: "https://stonkai-chat.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/svelte-ai-injection.git"
 repoURL: "https://github.com/bjornleonhenry/svelte-ai-injection.git"
 ---
 
@@ -35,12 +35,12 @@ Sveltekit chatGPT integration with dynamic 3rd party API-fed context injection. 
 
 ## Detailed views of stock prices, company data, news, videos, and more.
 
-<img class="rounded" src="/images/svelte-ai-injection-chart1.png"/>
+<img class="rounded" src="/images/svelte-ai-injection-chart1.webp"/>
 <br/>
 
 ## Context-aware AI insights and sentiment analysis
 
-<img class="rounded" src="/images/svelte-ai-injection-chart2.png"/>
+<img class="rounded" src="/images/svelte-ai-injection-chart2.webp"/>
 <br/>
 
 ## Getting Started (for developers)

@@ -5,7 +5,7 @@ title: Spatz
 description: A fullstack Sveltekit template for building FAST.
 excerpt: hello world
 category: projects
-image: /images/spatz.png
+image: /images/spatz.webp
 tags:
   - Svelte
   - Sveltekit
@@ -22,7 +22,7 @@ tags:
   - Web
   - Git
   - GitHub
-projectURL: "https://spatz.engage-dev.com"
+projectURL: "https://github.com/bjornleonhenry/spatz"
 repoURL: "https://github.com/bjornleonhenry/spatz"
 ---
 

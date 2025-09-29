@@ -5,7 +5,7 @@ title: Running Hugging Face Transformers Locally
 description: A guide on how to use Hugging Face Transformers to run machine learning models locally.
 excerpt: Artificial Intelligence and Machine Learning are transforming industries, and one of the key technologies driving this revolution is the transformer architecture.
 category: now
-image: "https://huggingface.co/front/assets/homepage/hugs-mobile.svg"
+image: "images/hugs.svg"
 tags:
   - Python
   - AI

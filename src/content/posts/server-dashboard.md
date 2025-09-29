@@ -5,7 +5,7 @@ title: Server Dashboard
 description: A simple server dashboard that displays the CPU and memory usage of the server it is running on. The server is written in Python and the client is written in Svelte.
 excerpt: hello world
 category: projects
-image: /images/server-dashboard3.png
+image: /images/server-dashboard3.webp
 tags:
   - Svelte
   - Sveltekit
@@ -26,7 +26,7 @@ tags:
   - Linode
   - Git
   - GitHub
-projectURL: "https://friday-dashboard-pi.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/server-dashboard"
 repoURL: "https://github.com/bjornleonhenry/server-dashboard"
 ---
 

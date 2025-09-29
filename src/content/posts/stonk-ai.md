@@ -5,7 +5,7 @@ title: Stonk Ai
 description: A stock market prediction app built with Sveltekit, Python, TensorFlow, TailwindCSS, and DaisyUI.
 excerpt: hello world
 category: projects
-image: /images/stonkAi5.png
+image: /images/stonkAi5.webp
 tags:
   - Svelte
   - Sveltekit
@@ -28,7 +28,7 @@ tags:
   - Finance
   - Git
   - GitHub
-projectURL: "https://stonkai.xyz"
+projectURL: "https://github.com/bjornleonhenry/ai-stock-client.git"
 repoURL: "https://github.com/bjornleonhenry/ai-stock-client.git"
 ---
 
@@ -46,12 +46,12 @@ This app is an AI stock market prediction app built with Sveltekit, Python, Tens
 
 # Detailed views of stock prices, company data, news, videos, and more.
 
-<img class="rounded" src="/images/stonkAi6.png"/>
+<img class="rounded" src="/images/stonkAi6.webp"/>
 <br/>
 
 # Context-aware AI insights and sentiment analysis
 
-<img class="rounded" src="/images/stonkAi7.png"/>
+<img class="rounded" src="/images/stonkAi7.webp"/>
 <br/>
 
 <br/>

@@ -5,7 +5,7 @@ title: Litterbot
 description: An app for easy control over whisker's litter robot 4.
 excerpt: hello world
 category: projects
-image: /images/litterbot.png
+image: /images/litterbot.webp
 tags:
   - Svelte
   - Sveltekit
@@ -20,7 +20,7 @@ tags:
   - IOT
   - Git
   - GitHub
-projectURL: "https://litterbot.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/litterbot"
 repoURL: "https://github.com/bjornleonhenry/litterbot"
 ---
 

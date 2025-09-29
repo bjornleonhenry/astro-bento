@@ -4,7 +4,7 @@ pubDate: 2024-6-21T12:00:00Z
 title: Unmineable
 description: A simple dashboard to monitor your Unmineable mining rig.
 category: projects
-image: /images/unmineable.png
+image: /images/unmineable.webp
 tags:
   - Svelte
   - Sveltekit
@@ -25,7 +25,7 @@ tags:
   - Git
   - GitHub
 
-projectURL: "https://mine.engage-dev.com"
+projectURL: "https://github.com/bjornleonhenry/unmineable"
 repoURL: "https://github.com/bjornleonhenry/unmineable"
 ---
 

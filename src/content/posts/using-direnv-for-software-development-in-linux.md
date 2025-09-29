@@ -4,7 +4,7 @@ pubDate: 2024-5-26T12:00:00Z
 title: Using Direnv in Linux for Software Development
 description: Learn how to streamline environment variable management in Linux with Direnv.
 category: now
-image: /images/direnv.png
+image: /images/direnv.webp
 tags:
   - Linux
   - Software Development

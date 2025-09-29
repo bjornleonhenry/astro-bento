@@ -5,7 +5,7 @@ title: Rugged Development
 description: An ultra-modern landing page for a rugged computing  company.
 excerpt: hello world
 category: projects
-image: /images/rugged-dev.png
+image: /images/rugged-dev.webp
 tags:
   - Next.js
   - React
@@ -23,7 +23,7 @@ tags:
   - Git
   - GitHub
 
-projectURL: "https://rugged-development.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/rugged-homepage"
 repoURL: "https://github.com/bjornleonhenry/rugged-homepage"
 ---
 

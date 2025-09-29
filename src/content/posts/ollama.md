@@ -5,7 +5,7 @@ title: Ollama
 description: Run Llama 2, Code Llama, and other models locally. Customize and create your own models.
 excerpt: hello world
 category: now
-image: /images/ollama2.png
+image: /images/ollama2.webp
 tags:
   - Llama2
   - Python

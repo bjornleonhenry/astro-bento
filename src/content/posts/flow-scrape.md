@@ -5,7 +5,7 @@ title: Flow Scrape
 description: A modern, full-stack SaaS web application for building and executing custom automated workflows, with a focus on web scraping and data processing. Built with Next.js, TypeScript, Prisma.
 excerpt: hello world
 category: projects
-image: /posts/images/flow-scrape.png
+image: "/images/flow-scrape.webp"
 tags:
   - Next.js
   - TypeScript
@@ -48,11 +48,11 @@ Flow Scrape provides a comprehensive platform for creating, managing, and execut
 
 ### &nbsp;
 
-![Screenshot 1](/posts/images/flow-scrape-1.png)
+![Screenshot 1](/images/flow-scrape-1.webp)
 
 ### &nbsp;
 
-![Screenshot 1](/posts/images/flow-scrape-2.png)
+![Screenshot 1](/images/flow-scrape-2.webp)
 
 ### &nbsp;
 

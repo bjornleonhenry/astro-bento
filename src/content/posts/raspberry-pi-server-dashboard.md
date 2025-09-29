@@ -5,7 +5,7 @@ title: Raspberry Pi Server Dashboard
 description: A dynamic dashboard for Raspberry Pi servers using Sveltekit, Python, Web Sockets, FastAPI, and Docker.
 excerpt: hello world
 category: projects
-image: /images/pi-dashboard.png
+image: /images/pi-dashboard.webp
 tags:
   - Svelte
   - Sveltekit
@@ -24,6 +24,6 @@ tags:
   - Git
   - GitHub
 
-projectURL: "https://pi.engage-intellect.com"
+projectURL: "https://github.com/bjornleonhenry/pi-dashboard-docker"
 repoURL: "https://github.com/bjornleonhenry/pi-dashboard-docker"
 ---

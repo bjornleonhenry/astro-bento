@@ -5,7 +5,7 @@ title: GSA RAG
 description: An AI-powered context-aware recommendation system for the GSA Elibrary2.0.
 excerpt: hello world
 category: projects
-image: /images/gsa-rag.png
+image: /images/gsa-rag.webp
 tags:
   - Next.js
   - React
@@ -35,8 +35,8 @@ tags:
   - AmazonAWS
   - AmazonS3
 
-projectURL: "https://resonantlogic-gsa-search.vercel.app"
-repoURL: "https://github.com/bjornleonhenry/gsa-rag-frontend/tree/main"
+projectURL: "https://github.com/bjornleonhenry/gsa-rag-frontend"
+repoURL: "https://github.com/bjornleonhenry/gsa-rag-frontend"
 ---
 
 # Introduction

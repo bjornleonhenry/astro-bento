@@ -5,7 +5,7 @@ title: Crypto Dashbord
 description: Easily determine the best time to buy or sell your crypto.
 excerpt: A simple crypto dashbord built with Sveltekit, CoinGecko API, Blockchain.com API, Fear & Greed index, TailwindCSS, and DaisyUI.
 category: projects
-image: "https://akm-img-a-in.tosshub.com/businesstoday/images/story/202309/pandasecurity-crypto-gaming-sixteen_nine.jpg?size=948:533"
+image: "images/crypto-dashboard.webp"
 tags:
   - Svelte
   - Sveltekit
@@ -19,7 +19,7 @@ tags:
   - Git
   - GitHub
 
-projectURL: "https://engage-crypto.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/crypto-dashboard"
 repoURL: "https://github.com/bjornleonhenry/crypto-dashboard"
 ---
 

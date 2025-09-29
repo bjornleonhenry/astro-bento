@@ -5,7 +5,7 @@ title: AI Twitter Bio Generator
 description: A Twitter bio generator built with Next.js 13, OpenAI's ChatGPT API, and TailwindCSS.
 excerpt: Instantly generate great twitter bios using OpenAI's ChatGPT API.
 category: projects
-image: "https://i.guim.co.uk/img/media/6bc60b720f2288e8b8153dc04e8b079b4a7a9dd6/0_93_4276_2566/master/4276.jpg?width=1200&quality=85&auto=format&fit=max&s=dbf5ae905596b39263143be5a4ec7488"
+image: "/images/twitter-bio.webp"
 tags:
   - Next.js
   - React
@@ -22,7 +22,7 @@ tags:
   - GitHub
 
 
-projectURL: "https://twitter-bio-tau.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/twitter-bio"
 repoURL: "https://github.com/bjornleonhenry/twitter-bio"
 ---
 

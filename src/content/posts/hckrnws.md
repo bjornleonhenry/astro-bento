@@ -5,7 +5,7 @@ title: hckrnws
 description: A Hacker News UI written in Sveltekit, TailwindCSS, and DaisyUI.
 excerpt: hello world
 category: projects
-image: /images/hckrnws2.png
+image: /images/hckrnws2.webp
 tags:
   - Svelte
   - Sveltekit
@@ -19,7 +19,7 @@ tags:
   - Git
   - GitHub
 
-projectURL: "https://hckrnws.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/hckrnws"
 repoURL: "https://github.com/bjornleonhenry/hckrnws"
 ---
 

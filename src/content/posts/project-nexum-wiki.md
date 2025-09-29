@@ -5,7 +5,7 @@ title: Project Nexum Wiki
 description: An open wiki platform built with Sveltekit, Pocketbase, Zod, TinyMCE, TailwindCSS, and DaisyUI.
 excerpt: An open wiki platform built with Sveltekit, Pocketbase, Zod, TinyMCE, TailwindCSS, and DaisyUI.
 category: projects
-image: /images/wiki-platform.png
+image: /images/wiki-platform.webp
 tags:
   - Svelte
   - Sveltekit
@@ -24,7 +24,7 @@ tags:
   - MySQL
   - Git
   - GitHub
-projectURL: "https://project-nexum.vercel.app"
+projectURL: "https://github.com/bjornleonhenry/project-nexum"
 repoURL: "https://github.com/bjornleonhenry/project-nexum"
 ---
 

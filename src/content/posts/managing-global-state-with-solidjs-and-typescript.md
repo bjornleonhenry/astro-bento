@@ -5,7 +5,7 @@ title: Managing Global State with Solid.js and TypeScript
 description: How to implement global state management using Solid.js and TypeScript.
 excerpt: A step-by-step guide to implementing global state management with Solid.js and TypeScript.
 category: now
-image: /images/solid.png
+image: /images/solid.webp
 tags:
   - SolidJS
   - TypeScript

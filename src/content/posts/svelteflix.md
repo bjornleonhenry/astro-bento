@@ -5,7 +5,7 @@ title: Svelteflix
 description: A Netflix clone build with Sveltekit and TailwindCSS.
 excerpt: An open wiki platform built with Sveltekit, Pocketbase, Zod, TinyMCE, TailwindCSS, and DaisyUI.
 category: projects
-image: /images/svelteflix.png
+image: /images/svelteflix.webp
 tags:
   - Svelte
   - Sveltekit
