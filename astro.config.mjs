@@ -17,7 +17,8 @@ export default defineConfig({
   integrations: [sitemap(), robotsTxt({
     sitemap: ["https://astro-bento.vercel.app/sitemap-index.xml", "https://astro-bento.vercel.app/sitemap-0.xml"]
   }), solidJs(), UnoCSS({
-    injectReset: true
+    injectReset: true,
+    hmrTopLevelAwait: false
   }), icon()],
   markdown: {
     remarkPlugins: [remarkReadingTime]

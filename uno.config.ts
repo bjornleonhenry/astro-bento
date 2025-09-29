@@ -5,17 +5,8 @@ export default defineConfig({
     filesystem: ["**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}"],
   },
   details: false,
+  safelist: [], // Add any classes that might be dynamically generated
   theme: {
-    boxShadow: {
-      custom: `1px 1px 0px`,
-      "custom-hover": `1px 1px 0`,
-    },
-    gridTemplateRow: {
-      "auto-250": "repeat(auto-fill, 250px)",
-    },
-    gridTemplateColumn: {
-      "4-minmax": "repeat(4, minmax(150px, 1fr))",
-    },
     colors: {
       gray: {
         50: "#FAFAFA",

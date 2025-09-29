@@ -15,8 +15,6 @@ interface Props {
   };
 }
 
-import 'uno.css';
-
 const { title, description, page, slug, frontmatter } = Astro.props;
 const image =
   page === "travel"
@@ -134,12 +132,17 @@ const schema =
     />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-
-
     <style>
-      /* @view-transition {
-        navigation: auto;
-      } */
+      /* Prevent flash of unstyled content */
+      body {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
+      }
+      /* Basic reset until UnoCSS loads */
+      * {
+        box-sizing: border-box;
+      }
     </style>
   </head>
 
