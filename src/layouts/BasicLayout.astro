@@ -133,13 +133,214 @@ const schema =
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
     <style>
-      /* Prevent flash of unstyled content - minimal approach */
+      /* Prevent flash of unstyled content - comprehensive approach */
+      html {
+        visibility: hidden;
+        opacity: 0;
+      }
+      html.wf-active {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Basic layout and colors matching final design */
       body {
         background-color: #2c2c2c;
         color: #ffffff;
         font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
       }
-      /* Basic reset until UnoCSS loads */
+
+      /* Essential UnoCSS-like styles for flash prevention */
+      .bg-darkslate-400 {
+        background-color: #2c2c2c;
+      }
+
+      .text-neutral-100 {
+        color: #ffffff;
+      }
+
+      .text-neutral-100\/50 {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .border-gray-500 {
+        border-color: #6b7280;
+      }
+
+      .border-t {
+        border-top-width: 1px;
+      }
+
+      .border-b-none {
+        border-bottom-width: 0;
+      }
+
+      .rounded {
+        border-radius: 0.25rem;
+      }
+
+      .rounded-b-none {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .opacity-0 {
+        opacity: 0;
+      }
+
+      .opacity-1 {
+        opacity: 1;
+      }
+
+      /* Layout utilities */
+      .flex {
+        display: flex;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .max-w-2xl {
+        max-width: 42rem;
+      }
+
+      .w-full {
+        width: 100%;
+      }
+
+      .w-fit {
+        width: fit-content;
+      }
+
+      .p-2 {
+        padding: 0.5rem;
+      }
+
+      .py-5 {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+      }
+
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .py-1 {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
+      .mt-2 {
+        margin-top: 0.5rem;
+      }
+
+      .mb-10 {
+        margin-bottom: 2.5rem;
+      }
+
+      .gap-2 {
+        gap: 0.5rem;
+      }
+
+      /* Typography */
+      .text-sm {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+
+      .text-5xl {
+        font-size: 3rem;
+        line-height: 1;
+      }
+
+      .font-bold {
+        font-weight: 700;
+      }
+
+      .capitalize {
+        text-transform: capitalize;
+      }
+
+      .decoration-none {
+        text-decoration: none;
+      }
+
+      /* Prose styles for content */
+      .prose {
+        color: var(--tw-prose-body);
+        max-width: none;
+      }
+
+      .prose-invert {
+        --tw-prose-body: #ffffff;
+        --tw-prose-headings: #ffffff;
+        --tw-prose-lead: #ffffff;
+        --tw-prose-links: #ffffff;
+        --tw-prose-bold: #ffffff;
+        --tw-prose-counters: #ffffff;
+        --tw-prose-bullets: #ffffff;
+        --tw-prose-hr: #ffffff;
+        --tw-prose-quotes: #ffffff;
+        --tw-prose-quote-borders: #ffffff;
+        --tw-prose-captions: #ffffff;
+        --tw-prose-code: #ffffff;
+        --tw-prose-pre-code: #ffffff;
+        --tw-prose-pre-bg: #1f2937;
+        --tw-prose-th-borders: #374151;
+        --tw-prose-td-borders: #374151;
+      }
+
+      .prose-p\:text-purple-500 p {
+        color: #a855f7;
+      }
+
+      .prose-slate {
+        --tw-prose-body: #64748b;
+        --tw-prose-headings: #1e293b;
+        --tw-prose-lead: #64748b;
+        --tw-prose-links: #3b82f6;
+        --tw-prose-bold: #1e293b;
+        --tw-prose-counters: #64748b;
+        --tw-prose-bullets: #64748b;
+        --tw-prose-hr: #e2e8f0;
+        --tw-prose-quotes: #1e293b;
+        --tw-prose-quote-borders: #e2e8f0;
+        --tw-prose-captions: #64748b;
+        --tw-prose-code: #1e293b;
+        --tw-prose-pre-code: #e2e8f0;
+        --tw-prose-pre-bg: #1e293b;
+        --tw-prose-th-borders: #cbd5e1;
+        --tw-prose-td-borders: #cbd5e1;
+      }
+
+      /* Hide scrollbar */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Basic reset */
       * {
         box-sizing: border-box;
       }
@@ -149,6 +350,33 @@ const schema =
   <body class="bg-darkslate-400 flex flex-col justify-center items-center">
     <slot name="loader" />
     <slot />
+
+    <script>
+      // Prevent flash of unstyled content by waiting for fonts and styles
+      function showContent() {
+        document.documentElement.classList.add('wf-active');
+      }
+
+      // Check if fonts are loaded
+      if ('fonts' in document) {
+        document.fonts.ready.then(function() {
+          // Small delay to ensure styles are applied
+          setTimeout(showContent, 50);
+        });
+      } else {
+        // Fallback for browsers without Font Loading API
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(showContent, 100);
+          });
+        } else {
+          setTimeout(showContent, 100);
+        }
+      }
+
+      // Safety fallback - show content after 2 seconds regardless
+      setTimeout(showContent, 2000);
+    </script>
   </body>
   <style is:global>
     @font-face {
