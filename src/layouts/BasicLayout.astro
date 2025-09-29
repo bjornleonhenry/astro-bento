@@ -92,13 +92,16 @@ const schema =
     <meta name="robots" content="/favicon/sitemap-index.xml" />
     <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={description || "Personal portfolio and blog of Bjorn Leon Henry - Full-stack developer specializing in modern web technologies, AI, and creative coding projects."} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.origin} />
+    <meta property="og:site_name" content="Bjorn Leon Henry" />
     <meta
       property="og:image"
-      content={image || "https://github.com/bjornleonhenry.png"}
+      content={image || `${Astro.url.origin}/og-image.png`}
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
