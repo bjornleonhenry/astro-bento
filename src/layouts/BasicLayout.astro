@@ -139,11 +139,13 @@ const schema =
 
     <style>
       /* Prevent flash of unstyled content - comprehensive approach */
-      .content-hidden {
-        display: none !important;
+      html {
+        visibility: hidden;
+        opacity: 0;
       }
-      .content-visible {
-        display: block;
+      html.wf-active {
+        visibility: visible;
+        opacity: 1;
       }
 
       /* Basic layout and colors matching final design */
@@ -350,24 +352,18 @@ const schema =
     </style>
   </head>
 
-  <body class="bg-darkslate-400 flex flex-col justify-center items-center content-hidden">
+  <body class="bg-darkslate-400 flex flex-col justify-center items-center">
     <slot name="loader" />
     <slot />
-    <SpeedInsights />
     <script>
       // Prevent flash of unstyled content by waiting for fonts and styles
       function showContent() {
-        console.log('Showing content');
-        document.body.classList.remove('content-hidden');
-        document.body.classList.add('content-visible');
+        document.documentElement.classList.add('wf-active');
       }
-
-      console.log('Script loaded');
 
       // Check if fonts are loaded
       if ('fonts' in document) {
         document.fonts.ready.then(function() {
-          console.log('Fonts loaded');
           // Small delay to ensure styles are applied
           setTimeout(showContent, 50);
         });
@@ -375,7 +371,6 @@ const schema =
         // Fallback for browsers without Font Loading API
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOMContentLoaded');
             setTimeout(showContent, 100);
           });
         } else {
@@ -386,7 +381,8 @@ const schema =
       // Safety fallback - show content after 2 seconds regardless
       setTimeout(showContent, 2000);
     </script>
-  </body>
+  <SpeedInsights />
+  </body>  
   <style is:global>
     @font-face {
       font-family: "Ubuntu";
