@@ -112,40 +112,15 @@ const schema =
       name="twitter:image"
       content={image || `${Astro.url.origin}/og-image.png`}
     />
-
-    <!-- Font preloading -->
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Regular.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Bold.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Light.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin="anonymous"
-    />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
     <style>
-      /* Prevent flash of unstyled content - comprehensive approach */
-      html {
-        visibility: hidden;
-        opacity: 0;
+      /* Prevent flash of unstyled content - production-ready approach */
+      .content-hidden {
+        display: none !important;
       }
-      html.wf-active {
-        visibility: visible;
-        opacity: 1;
+      .content-visible {
+        display: block;
       }
 
       /* Basic layout and colors matching final design */
@@ -350,36 +325,79 @@ const schema =
         box-sizing: border-box;
       }
     </style>
+
+    <!-- Font preloading -->
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Light.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
   </head>
 
-  <body class="bg-darkslate-400 flex flex-col justify-center items-center">
+  <body class="bg-darkslate-400 flex flex-col justify-center items-center content-hidden">
     <slot name="loader" />
     <slot />
     <script>
-      // Prevent flash of unstyled content by waiting for fonts and styles
+      // Prevent flash of unstyled content - production-ready approach
       function showContent() {
-        document.documentElement.classList.add('wf-active');
+        console.log('FOUC: Showing content');
+        document.body.classList.remove('content-hidden');
+        document.body.classList.add('content-visible');
       }
 
-      // Check if fonts are loaded
-      if ('fonts' in document) {
+      console.log('FOUC: Script loaded');
+
+      // Immediate check - if fonts are already loaded
+      if (document.fonts && document.fonts.status === 'loaded') {
+        console.log('FOUC: Fonts already loaded');
+        setTimeout(showContent, 10);
+      }
+      // Check if fonts are loading
+      else if ('fonts' in document) {
+        console.log('FOUC: Waiting for fonts');
         document.fonts.ready.then(function() {
-          // Small delay to ensure styles are applied
+          console.log('FOUC: Fonts loaded via Font Loading API');
           setTimeout(showContent, 50);
+        }).catch(function() {
+          console.log('FOUC: Font loading failed, showing content anyway');
+          setTimeout(showContent, 100);
         });
-      } else {
-        // Fallback for browsers without Font Loading API
+      }
+      // Fallback for browsers without Font Loading API
+      else {
+        console.log('FOUC: No Font Loading API, using DOMContentLoaded');
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', function() {
+            console.log('FOUC: DOMContentLoaded fired');
             setTimeout(showContent, 100);
           });
         } else {
+          console.log('FOUC: Document already loaded');
           setTimeout(showContent, 100);
         }
       }
 
-      // Safety fallback - show content after 2 seconds regardless
-      setTimeout(showContent, 2000);
+      // Safety fallback - show content after 3 seconds regardless
+      setTimeout(function() {
+        console.log('FOUC: Safety timeout reached');
+        showContent();
+      }, 3000);
     </script>
   <SpeedInsights />
   </body>  
