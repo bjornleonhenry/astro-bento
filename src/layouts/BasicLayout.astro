@@ -111,16 +111,8 @@ const schema =
       name="twitter:image"
       content={image || `${Astro.url.origin}/og-image.png`}
     />
-    <!-- Basic Twitter Card tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content={image || "https://github.com/bjornleonhenry.png"}
-    />
 
-    <link rel="preconnect" href="https://cdn.fontshare.com" />
+    <!-- Font preloading -->
     <link
       rel="preload"
       href="/fonts/Ubuntu-Regular.ttf"
@@ -393,7 +385,7 @@ const schema =
   <style is:global>
     @font-face {
       font-family: "Ubuntu";
-      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype-variations");
+      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -401,7 +393,7 @@ const schema =
     }
     @font-face {
       font-family: "Ubuntu-Bold";
-      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype-variations");
+      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -409,7 +401,7 @@ const schema =
     }
     @font-face {
       font-family: "Ubuntu-Light";
-      src: url("/fonts/Ubuntu-Light.ttf") format("truetype-variations");
+      src: url("/fonts/Ubuntu-Light.ttf") format("truetype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
