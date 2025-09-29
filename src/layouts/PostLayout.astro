@@ -5,31 +5,23 @@ import BasicLayout from "./BasicLayout.astro";
 import { Icon } from "astro-icon/components";
 import Navbar from "../components/Navbar.astro";
 
-type Props = MarkdownLayoutProps<{
-  title: string;
-  category: string;
-  description: string;
-  pubDate: string;
-  minutesRead: string;
-  image: string;
-  projectURL: string;
-  repoURL: string;
-  tags: string[];
-}>;
+// Use a permissive props type to avoid strict layout frontmatter constraints from Astro's types
+type Props = Record<string, any>;
 
 const { slug } = Astro.params;
 const { frontmatter } = Astro.props;
 
 // Try to get data from remarkPluginFrontmatter if frontmatter is missing custom fields
-const actualFrontmatter = frontmatter || Astro.locals?.remarkPluginFrontmatter || {};
+// Use a safe fallback and prefer the populated source
+const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).remarkPluginFrontmatter) ?? {};
 ---
 
 <BasicLayout
-  frontmatter={frontmatter}
+  frontmatter={actualFrontmatter}
   slug={slug}
   page="blog"
-  title={`Bjorn Leon Henry - ${frontmatter.title}`}
-  description={frontmatter.description}
+  title={`Bjorn Leon Henry - ${actualFrontmatter.title || ''}`}
+  description={actualFrontmatter.description || ''}
 >
   <Navbar />
 
@@ -46,15 +38,15 @@ const actualFrontmatter = frontmatter || Astro.locals?.remarkPluginFrontmatter |
     </div>
     <div class="border-t border-gray-500">
       <div class="flex justify-between mt-2 text-neutral-100/50 text-sm">
-        <p>{frontmatter.minutesRead}</p>
-        <p>{formatDate(new Date(frontmatter.pubDate))}</p>
+  <p>{actualFrontmatter.minutesRead || ''}</p>
+  <p>{actualFrontmatter.pubDate ? formatDate(new Date(String(actualFrontmatter.pubDate))) : ''}</p>
       </div>
 
       <div class="text-5xl f-bold mt-2 opacity-0" id="post-title" aria-hidden="true">
-        {frontmatter.title}
+        {actualFrontmatter.title}
       </div>
       <div class="text-neutral-100/70 opacity-0" id="post-description" aria-hidden="true">
-        {frontmatter.description}
+        {actualFrontmatter.description}
       </div>
 
       <div class="">
@@ -68,8 +60,8 @@ const actualFrontmatter = frontmatter || Astro.locals?.remarkPluginFrontmatter |
 
         <div class="flex gap-1 w-full overflow-scroll mb-2">
           {
-            frontmatter.tags.map((tag) => (
-              <a
+            (Array.isArray(actualFrontmatter.tags) ? actualFrontmatter.tags : []).map((tag: string) => (
+                <a
                 href={`/tags/${formatTag(tag)}`}
                 class="no-underline hover:no-underline text-sm bg-gray-700 text-neutral-100 rounded px-2 py-1 lowercase whitespace-nowrap"
               >
@@ -80,9 +72,9 @@ const actualFrontmatter = frontmatter || Astro.locals?.remarkPluginFrontmatter |
         </div>
       </div>
 
-      <a href={frontmatter.projectURL || "hover:skew-y-12"}>
+        <a href={actualFrontmatter.projectURL || "hover:skew-y-12"}>
         <img
-          src={frontmatter.image}
+          src={actualFrontmatter.image}
           alt=""
           class="border border-gray-500/50 w-full object-cover h-full opacity-0"
           id="post-image"

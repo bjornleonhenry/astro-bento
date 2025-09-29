@@ -4,15 +4,8 @@ interface Props {
   description: string;
   page?: "travel" | "blog";
   slug?: string | undefined;
-  frontmatter?: {
-    file: string;
-    url: string | undefined;
-  } & {
-    title: string;
-    description: string;
-    pubDate: string;
-    minutesRead: string;
-  };
+  // Allow flexible frontmatter shape - many pages pass different fields
+  frontmatter?: Record<string, any>;
 }
 
 import SpeedInsights from '@vercel/speed-insights/astro';
@@ -354,50 +347,71 @@ const schema =
     <slot name="loader" />
     <slot />
     <script>
-      // Prevent flash of unstyled content - production-ready approach
-      function showContent() {
-        console.log('FOUC: Showing content');
-        document.body.classList.remove('content-hidden');
-        document.body.classList.add('content-visible');
-      }
+      (function () {
+        // Guard DOM access for SSR/type-checking. Use a local any reference.
+        const doc: any = typeof document !== 'undefined' ? document : null;
 
-      console.log('FOUC: Script loaded');
-
-      // Immediate check - if fonts are already loaded
-      if (document.fonts && document.fonts.status === 'loaded') {
-        console.log('FOUC: Fonts already loaded');
-        setTimeout(showContent, 10);
-      }
-      // Check if fonts are loading
-      else if ('fonts' in document) {
-        console.log('FOUC: Waiting for fonts');
-        document.fonts.ready.then(function() {
-          console.log('FOUC: Fonts loaded via Font Loading API');
-          setTimeout(showContent, 50);
-        }).catch(function() {
-          console.log('FOUC: Font loading failed, showing content anyway');
-          setTimeout(showContent, 100);
-        });
-      }
-      // Fallback for browsers without Font Loading API
-      else {
-        console.log('FOUC: No Font Loading API, using DOMContentLoaded');
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function() {
-            console.log('FOUC: DOMContentLoaded fired');
-            setTimeout(showContent, 100);
-          });
-        } else {
-          console.log('FOUC: Document already loaded');
-          setTimeout(showContent, 100);
+        function showContent() {
+          try {
+            if (doc && doc.body) {
+              doc.body.classList.remove('content-hidden');
+              doc.body.classList.add('content-visible');
+            }
+            console.log('FOUC: Showing content');
+          } catch (e) {
+            console.warn('FOUC: showContent error', e);
+          }
         }
-      }
 
-      // Safety fallback - show content after 3 seconds regardless
-      setTimeout(function() {
-        console.log('FOUC: Safety timeout reached');
-        showContent();
-      }, 3000);
+        console.log('FOUC: Script loaded');
+
+        if (!doc) {
+          // Not in a browser environment — nothing to do here
+          return;
+        }
+
+        try {
+          // Immediate check - if fonts are already loaded
+          if (doc.fonts && doc.fonts.status === 'loaded') {
+            console.log('FOUC: Fonts already loaded');
+            setTimeout(showContent, 10);
+          }
+          // Check if fonts are loading
+          else if ('fonts' in doc) {
+            console.log('FOUC: Waiting for fonts');
+            (doc.fonts.ready || Promise.resolve()).then(function () {
+              console.log('FOUC: Fonts loaded via Font Loading API');
+              setTimeout(showContent, 50);
+            }).catch(function () {
+              console.log('FOUC: Font loading failed, showing content anyway');
+              setTimeout(showContent, 100);
+            });
+          }
+          // Fallback for browsers without Font Loading API
+          else {
+            console.log('FOUC: No Font Loading API, using DOMContentLoaded');
+            if (doc.readyState === 'loading') {
+              doc.addEventListener('DOMContentLoaded', function () {
+                console.log('FOUC: DOMContentLoaded fired');
+                setTimeout(showContent, 100);
+              });
+            } else {
+              console.log('FOUC: Document already loaded');
+              setTimeout(showContent, 100);
+            }
+          }
+        } catch (e) {
+          console.warn('FOUC: script error', e);
+          // Ensure content shows eventually
+          setTimeout(showContent, 3000);
+        }
+
+        // Safety fallback - show content after 3 seconds regardless
+        setTimeout(function () {
+          console.log('FOUC: Safety timeout reached');
+          showContent();
+        }, 3000);
+      })();
     </script>
   <SpeedInsights />
   </body>  

@@ -28,9 +28,35 @@ if (entry === undefined) {
 }
 
 const { Content } = await entry.render();
+
+type PostData = {
+  title?: string;
+  description?: string;
+  pubDate?: string | Date;
+  category?: string;
+  image?: string;
+  tags?: string[];
+  projectURL?: string;
+  repoURL?: string;
+  minutesRead?: string;
+};
+
+const data = entry.data as PostData;
+
+const mf: PostData = {
+  title: data.title,
+  description: data.description,
+  pubDate: data.pubDate,
+  category: data.category,
+  image: data.image,
+  tags: data.tags,
+  projectURL: data.projectURL,
+  repoURL: data.repoURL,
+  minutesRead: data.minutesRead ?? '',
+};
 ---
 
-<PostLayout frontmatter={entry.data} slug={slug}>
+<PostLayout frontmatter={mf} slug={slug}>
   <Content />
 </PostLayout>
 
