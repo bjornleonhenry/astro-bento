@@ -88,7 +88,7 @@ const schema =
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title || "Bjorn Leon Henry"}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={description || "Personal portfolio and blog of Bjorn Leon Henry - Full-stack developer specializing in modern web technologies, AI, and creative coding projects."} />
     <meta name="robots" content="/favicon/sitemap-index.xml" />
     <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
     <meta property="og:title" content={title} />
@@ -102,6 +102,15 @@ const schema =
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description || "Personal portfolio and blog of Bjorn Leon Henry - Full-stack developer specializing in modern web technologies, AI, and creative coding projects."} />
+    <meta
+      name="twitter:image"
+      content={image || `${Astro.url.origin}/og-image.png`}
+    />
     <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
