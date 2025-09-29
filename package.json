@@ -11,7 +11,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch-avatar": "node ./scripts/fetch-avatar.js",
     "check-node": "node -e \"const v = process.version; if (!v.includes('v22')) { console.error('Error: Node.js 22+ required. Current version:', v); process.exit(1); }\"",
     "setup-node": "echo 'To use Node 22, run: export PATH=\"$HOME/bin:$PATH\" (if installed locally) or use nvm: nvm use 22'"
   },
