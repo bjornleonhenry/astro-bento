@@ -19,7 +19,7 @@ const { title, description, page, slug, frontmatter } = Astro.props;
 const image =
   page === "travel"
     ? `${Astro.url.origin}/globe_preview.webp"`
-    : `${Astro.url.origin}/og-image.png`;
+    : `images/og-image.png`;
 
 const schema =
   page !== "blog"
@@ -32,7 +32,7 @@ const schema =
           "https://www.linkedin.com/",
           "https://github.com/bjornleonhenry",
         ],
-        image: "https://github.com/bjornleonhenry.png",
+        image: "images/bjornleonhenry.png",
         jobTitle: "Freelance Frontend Developer",
         worksFor: {
           "@type": "Organization",
@@ -57,7 +57,7 @@ const schema =
         },
         headline: frontmatter?.title || title,
         description: frontmatter?.description || title,
-        image: "https://github.com/bjornleonhenry.png", //TODO: dynamic
+        image: "images/bjornleonhenry.webp", //TODO: dynamic
         author: {
           "@type": "Person",
           name: "Bento",
