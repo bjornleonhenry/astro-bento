@@ -45,7 +45,7 @@ pnpm-debug.log*
 # lock files
 yarn.lock
 package-lock.json
-pnpm-lock.yaml
+# pnpm-lock.yaml
 pnpm-workspace.yaml
 
 # .md files
