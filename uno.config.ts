@@ -2,10 +2,36 @@ import { defineConfig, presetUno, presetWebFonts } from "unocss";
 
 export default defineConfig({
   content: {
-    filesystem: ["**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}"],
+    filesystem: [
+      "**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}",
+      "**/*.md",
+      "src/content/**/*.md"
+    ],
+    pipeline: {
+      include: [
+        /\b(class|className)="([^"]+)"/,
+        /\b(class|className)='([^']+)'/,
+        /\b(class|className)=`([^`]+)`/
+      ]
+    }
   },
   details: false,
-  safelist: [], // Add any classes that might be dynamically generated
+  safelist: [
+    // Layout and spacing
+    'mx-auto', 'max-w-2xl', 'w-full', 'p-2', 'md:py-5',
+    // Colors
+    'text-neutral-100', 'text-neutral-100/50', 'bg-darkslate-400',
+    'border-gray-500', 'border-t', 'border',
+    // Flexbox
+    'flex', 'justify-between', 'justify-center', 'items-center',
+    // Positioning
+    'w-fit', 'px-4', 'py-1', 'mt-2', 'rounded', 'rounded-b-none',
+    'border-b-none', 'capitalize', 'text-sm', 'decoration-none',
+    // Typography
+    'text-5xl', 'font-bold', 'opacity-0',
+    // Common utilities
+    'bg-primary-500', 'text-primary-500'
+  ],
   theme: {
     colors: {
       gray: {
