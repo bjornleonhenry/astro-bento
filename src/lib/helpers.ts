@@ -26,15 +26,15 @@ export function formatTimeForLosAngeles(date: Date): string {
     hour: "numeric",
     minute: "2-digit",
     second: "2-digit",
-    hour12: true, // This will format the time in 12-hour format with AM/PM
-    timeZone: "America/Los_Angeles",
+    hour12: false, // This will format the time in 12-hour format with AM/PM
+    timeZone: "Asia/Bangkok",
   };
 
   let formattedTime = new Intl.DateTimeFormat("en-US", options).format(date);
 
   // Append the time zone abbreviation. For simplicity, here I'm just appending "PST" or "PDT" depending on Daylight Saving Time.
-  const timezoneSuffix = isDST(date) ? " PDT" : " PST";
-  formattedTime += timezoneSuffix;
+  const timezoneSuffix = isDST(date) ? "  " : " ";
+  formattedTime += timezoneSuffix  ;
 
   return formattedTime;
 }

@@ -30,7 +30,8 @@ if (entry === undefined) {
 const { Content } = await entry.render();
 ---
 
-<PostLayout frontmatter={entry.data} slug={slug}>
+{/* @ts-ignore */}
+<PostLayout frontmatter={entry.data}>
   <Content />
 </PostLayout>
 
