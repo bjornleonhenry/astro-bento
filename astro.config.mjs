@@ -43,5 +43,25 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ['@rive-app/canvas']
     }
+    ,
+    plugins: [
+      {
+        name: 'dev-asset-cache-headers',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            try {
+              const url = req.url || '';
+              if (url.startsWith('/images/') || url.startsWith('/fonts/')) {
+                // Set long-lived immutable cache for static assets in dev
+                res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+              }
+            } catch (e) {
+              // ignore
+            }
+            next();
+          });
+        },
+      },
+    ],
   }
 });
