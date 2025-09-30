@@ -5,7 +5,7 @@ export function formatUserTime(date: Date, isUserLocation: boolean, userTimezone
   return date.toLocaleTimeString("en-US", {
     hour: "numeric", minute: "2-digit", second: "2-digit", hour12: false,
     timeZone: timezone,
-    timeZoneName: "short",
+  //  timeZoneName: "none",
   });
 }
 
@@ -39,10 +39,10 @@ export async function getLocationName(lat: number, lon: number): Promise<string>
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
     );
     const data = await response.json();
-    return `now @ ${data.city || data.locality || "@"}`;
+    return `${data.city || data.locality || ""}`;
   } catch (error) {
     console.error("Error fetching location name:", error);
-    return "@";
+    return " ";
   }
 }
 

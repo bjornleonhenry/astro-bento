@@ -68,8 +68,8 @@ function Tooltip(props: Props) {
       </div>
 
       <Show when={isVisible()}>
-        <div class="absolute shadow left-1/2 -translate-x-1/2 -translate-y-26 w-auto max-h-[70px] py-2 px-4 bg-purple-600 text-white text-center rounded-lg z-10 whitespace-normal ">
-          <p class="w-max">{currentMessage()}</p>
+        <div class="absolute shadow left-1/2 -translate-x-1/2 -translate-y-26 w-auto max-h-[70px] py-2 px-4 bg-white text-black text-center rounded-lg z-10 whitespace-normal ">
+          <p class="w-max f-bold">{currentMessage()}</p>
         </div>
       </Show>
     </div>
