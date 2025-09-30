@@ -191,7 +191,7 @@ export default function TimeZoneCard() {
   });
  
   return (
-        <div class="card group h-full sm:h-auto min-h-40 sm:min-h-auto overflow-hidden transform-y-[-40%] shadow-lg rounded-lg p-6 border border-darkslate-100 md:hover:border-gray-500 align-start flex-none justify-start relative transform perspective-1200 w-full transition-all duration-300 ease-in-out col-span-1 lg:col-span-2 md:row-span-2 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02] hover:-translate-y-1">
+            <div class={`card group h-full sm:h-auto min-h-40 sm:min-h-auto overflow-visible shadow-lg rounded-lg p-6 border border-darkslate-100 md:hover:border-gray-500 align-start flex-none justify-start relative w-full transition-transform duration-300 ease-in-out col-span-1 lg:col-span-2 md:row-span-2 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02] hover:-translate-y-1 ${isSwitching() ? 'animate-pulse bg-gradient-to-r from-transparent via-white/5 to-transparent' : ''}`}>
       <div class="grid grid-cols-0 gap-0 h-full">
         <div class={`flex flex-col gap-0 transition-all duration-300 ${isSwitching() ? 'opacity-70 scale-95' : 'opacity-100 scale-100'}`}>
           <div class="text-lg md:text-base mb-o flex items-center gap-1">
