@@ -222,3 +222,28 @@ import TechCard from "./TechCard.astro";
     />
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.flex.overflow-auto');
+    if (!container) return;
+
+    const items = container.querySelectorAll('.snap-center');
+    if (items.length === 0) return;
+
+    let currentIndex = 0;
+
+    const scrollToNext = () => {
+      currentIndex = (currentIndex + 1) % items.length;
+      const nextItem = items[currentIndex];
+      nextItem.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      });
+    };
+
+    // Auto scroll every 4 seconds
+    setInterval(scrollToNext, 4000);
+  });
+</script>
