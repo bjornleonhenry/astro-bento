@@ -6,15 +6,14 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/vibecode-playground.svg"
 tags:
-- - Next.js 15
-- - TypeScript
-- - TailwindCSS
-- - ShadCN UI
-- - Monaco Editor
-- - WebContainers
-- - xterm.js
-- - MongoDB
-- - AI Integration
+- Next.js 15
+- TypeScript
+- TailwindCSS
+- ShadCN UI
+- Monaco Editor
+- WebContainers
+- xterm.js
+- MongoDB
 projectURL: "https://vibecode-playground.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/vibecode-playground"
 ---

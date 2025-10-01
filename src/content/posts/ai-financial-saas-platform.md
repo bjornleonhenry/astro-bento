@@ -1,6 +1,6 @@
 ---
 pubDate: 2020-01-16T12:00:00Z
-title: Advanced MERN AI Finance SaaS Platform
+title: AI Finance SaaS Platform
 description: A modern web application built with cutting-edge technologies.
 excerpt: A modern web application built with cutting-edge technologies.
 category: projects
@@ -30,7 +30,7 @@ A modern web application built with cutting-edge technologies.
 
 ### &nbsp;
 
-![Screenshot 1](/images/ai-financial-saas-platform-1.webp)
+![Screenshot 1](/images/ai-financial-saas-platform.png)
 
 ### &nbsp;
 

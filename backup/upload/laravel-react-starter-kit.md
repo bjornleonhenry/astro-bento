@@ -6,8 +6,12 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/laravel-react-starter-kit.svg"
 tags:
-- ## ⚡️ Why use this kit?
-- ## 🔧 Installation
+- Laravel
+- React
+- TypeScript
+- Inertia.js
+- Tailwind CSS
+
 projectURL: "https://laravel-react-starter-kit.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/laravel-react-starter-kit"
 ---

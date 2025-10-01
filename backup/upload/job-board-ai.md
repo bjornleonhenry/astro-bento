@@ -6,8 +6,13 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/job-board-ai.svg"
 tags:
-- - 📱 Responsive design for all devices
-- - ⚡ Real-time notifications
+- Next.js
+- React
+- TypeScript
+- OpenAI API
+- Prisma
+- PostgreSQL
+
 projectURL: "https://job-board-ai.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/job-board-ai"
 ---

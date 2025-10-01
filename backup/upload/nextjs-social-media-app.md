@@ -6,13 +6,12 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/nextjs-social-media-app.svg"
 tags:
-- - Next.js 15
-- - TypeScript
-- - Tailwind CSS
-- - Prisma
-- - NextAuth.js
-- - UploadThing
-- - Real-time features
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Prisma
+- NextAuth.js
+- UploadThing
 projectURL: "https://nextjs-social-media-app.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/nextjs-social-media-app"
 ---

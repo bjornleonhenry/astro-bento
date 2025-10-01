@@ -1,36 +1,46 @@
 ---
-pubDate: 2020-01-16T12:00:00Z
-title: Advanced MERN AI Finance SaaS Platform
+pubDate: 2020-12-08T12:00:00Z
+title: Full-Stack Chat Application
 description: A modern web application built with cutting-edge technologies.
 excerpt: A modern web application built with cutting-edge technologies.
 category: projects
-image: "/images/ai-financial-saas-platform.svg"
+image: "/images/chatify.png"
 tags:
-- MongoDB
-- Express.js
-- React
+- JWT
+- Socket.io
 - Node.js
-- OpenAI API
-- Stripe
-projectURL: "https://ai-financial-saas-platform.vercel.app"
-repoURL: "https://github.com/bjornleonhenry/ai-financial-saas-platform"
+- Express
+- MongoDB
+- Arcjet
+- React
+- Tailwind CSS
+- DaisyUI
+projectURL: "https://chatify.vercel.app"
+repoURL: "https://github.com/bjornleonhenry/chatify"
 ---
 
-### What's included in ai-financial-saas-platform?
+### What's included in chatify?
 
 A modern web application built with cutting-edge technologies.
 
 ## Tech Stack
 
-* 🔐 Authentication
-## 🔧 How to Use This Project
-### 🚀 Installation & Setup
+- 🔐 Custom JWT Authentication
+- ⚡ Real-time Messaging via Socket.io
+- 🟢 Online/Offline Presence Indicators
+- 🔔 Notification & Typing Sounds
+- 📨 Welcome Emails on Signup
+- 🗂️ Image Uploads
+- 🧰 REST API with Node.js & Express
+- 🧱 MongoDB for Data Persistence
+- 🚦 API Rate-Limiting powered by Arcjet
+- 🎨 Beautiful UI with React, Tailwind CSS & DaisyUI
 
 ## Features
 
 ### &nbsp;
 
-![Screenshot 1](/images/ai-financial-saas-platform-1.webp)
+![Screenshot 1](/images/chatify-1.webp)
 
 ### &nbsp;
 
@@ -43,8 +53,8 @@ A modern web application built with cutting-edge technologies.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/bjornleonhenry/ai-financial-saas-platform.git
-cd ai-financial-saas-platform
+git clone https://github.com/bjornleonhenry/chatify.git
+cd chatify
 ```
 
 2. Install dependencies:

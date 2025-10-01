@@ -6,9 +6,13 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/fullstack-dating-app.svg"
 tags:
-- ## 🚀 Introduction
-- ## ⚡️ Features
-- - 📱 **Responsive UI** — Mobile-first design with Tailwind
+- Next.js
+- React
+- TypeScript
+- Prisma
+- PostgreSQL
+- Tailwind CSS
+
 projectURL: "https://fullstack-dating-app.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/fullstack-dating-app"
 ---

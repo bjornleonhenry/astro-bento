@@ -6,16 +6,15 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/chatify.svg"
 tags:
-- - 🔐 Custom JWT Authentication
-- - ⚡ Real-time Messaging via Socket.io
-- - 🟢 Online/Offline Presence Indicators
-- - 🔔 Notification & Typing Sounds
-- - 📨 Welcome Emails on Signup
-- - 🗂️ Image Uploads
-- - 🧰 REST API with Node.js & Express
-- - 🧱 MongoDB for Data Persistence
-- - 🚦 API Rate-Limiting powered by Arcjet
-- - 🎨 Beautiful UI with React, Tailwind CSS & DaisyUI
+- JWT
+- Socket.io
+- Node.js
+- Express
+- MongoDB
+- Arcjet
+- React
+- Tailwind CSS
+- DaisyUI
 projectURL: "https://chatify.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/chatify"
 ---

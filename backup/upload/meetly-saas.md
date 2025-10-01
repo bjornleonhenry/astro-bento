@@ -6,7 +6,13 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/meetly-saas.svg"
 tags:
-- ## 🚀 Tech Stack
+- PostgreSQL
+- Prisma
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
 projectURL: "https://meetly-saas.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/meetly-saas"
 ---

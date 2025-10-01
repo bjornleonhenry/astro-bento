@@ -6,12 +6,13 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/slack-clone.svg"
 tags:
-- - Node.js + Express
-- - React + Vite
-- - MongoDB
-- - Socket.io
-- - WebRTC
-- - File upload services
+- Node.js
+- Express
+- React
+- Vite
+- MongoDB
+- Socket.io
+- WebRTC
 projectURL: "https://slack-clone.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/slack-clone"
 ---

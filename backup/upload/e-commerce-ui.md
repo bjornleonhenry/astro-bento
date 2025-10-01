@@ -6,6 +6,10 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/e-commerce-ui.svg"
 tags:
+- React
+- TypeScript
+- Tailwind CSS
+- Next.js
 
 projectURL: "https://e-commerce-ui.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/e-commerce-ui"

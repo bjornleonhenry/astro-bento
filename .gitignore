@@ -51,4 +51,10 @@ pnpm-workspace.yaml
 # .md files
 VSCODE.md
 ASTRO.md
-.vercel
+
+# folders
+.vercel/
+-astro/
+dist/
+node_modules/
+.codacy/

@@ -6,8 +6,12 @@ excerpt: A modern web application built with cutting-edge technologies.
 category: projects
 image: "/images/real-estate-prod.svg"
 tags:
-- - 🔐 Role-based access control
-- - 📱 Responsive design for all devices
+- Next.js
+- React
+- TypeScript
+- Prisma
+- PostgreSQL
+
 projectURL: "https://real-estate-prod.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/real-estate-prod"
 ---
