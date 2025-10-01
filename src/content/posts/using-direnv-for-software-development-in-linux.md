@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2024-5-26T12:00:00Z
 title: Using Direnv in Linux for Software Development
 description: Learn how to streamline environment variable management in Linux with Direnv.

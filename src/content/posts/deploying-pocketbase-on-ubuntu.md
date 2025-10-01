@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2023-03-03T00:00:00Z
 title: Deploying Pocketbase on Ubuntu
 description: How to deploy a production Pocketbase server on Ubuntu using Nginx.

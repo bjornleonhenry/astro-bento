@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2023-09-18T00:00:00Z
 title: Fullstack Web Store
 description: A fullstack web store using HTMX, Python, Django, Stripe, SQLite, Ubuntu, and Apache.

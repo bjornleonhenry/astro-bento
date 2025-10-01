@@ -56,7 +56,8 @@ const mf: PostData = {
 };
 ---
 
-<PostLayout frontmatter={mf} slug={slug}>
+{/* @ts-ignore */}
+<PostLayout frontmatter={entry.data}>
   <Content />
 </PostLayout>
 

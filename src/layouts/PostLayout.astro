@@ -12,16 +12,26 @@ const { slug } = Astro.params;
 const { frontmatter } = Astro.props;
 
 // Try to get data from remarkPluginFrontmatter if frontmatter is missing custom fields
-// Use a safe fallback and prefer the populated source
-const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).remarkPluginFrontmatter) ?? {};
+// `Astro.locals` doesn't include custom plugin-provided fields in its TS type,
+// assert to `any` to avoid a compile error while remaining safe at runtime.
+const actualFrontmatter = frontmatter || (Astro.locals as any)?.remarkPluginFrontmatter || {};
+// Provide safe defaults for template usage
+const fmTitle = actualFrontmatter.title ?? "";
+const fmDescription = actualFrontmatter.description ?? "";
+const fmTags = Array.isArray(actualFrontmatter.tags) ? actualFrontmatter.tags : [];
+const fmImage = actualFrontmatter.image ?? "";
+const fmCategory = actualFrontmatter.category ?? "";
+const fmPubDate = actualFrontmatter.pubDate ?? "";
+const fmMinutesRead = actualFrontmatter.minutesRead ?? "";
+const fmProjectURL = actualFrontmatter.projectURL ?? "";
 ---
 
 <BasicLayout
   frontmatter={actualFrontmatter}
   slug={slug}
   page="blog"
-  title={`Bjorn Leon Henry - ${actualFrontmatter.title || ''}`}
-  description={actualFrontmatter.description || ''}
+  title={`Bjorn Leon Henry - ${fmTitle}`}
+  description={fmDescription}
 >
   <Navbar />
 
@@ -30,23 +40,23 @@ const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).
       class="w-fit px-4 py-1 rounded rounded-b-none border-b-none border border-gray-500"
     >
       <a
-        href={`/${frontmatter.category}`}
+        href={`/${fmCategory}`}
         class="text-neutral-100 capitalize text-sm decoration-none"
       >
-        {frontmatter.category}
+        {fmCategory}
       </a>
     </div>
     <div class="border-t border-gray-500">
       <div class="flex justify-between mt-2 text-neutral-100/50 text-sm">
-  <p>{actualFrontmatter.minutesRead || ''}</p>
-  <p>{actualFrontmatter.pubDate ? formatDate(new Date(String(actualFrontmatter.pubDate))) : ''}</p>
+        <p>{fmMinutesRead}</p>
+        <p>{fmPubDate ? formatDate(new Date(fmPubDate)) : ""}</p>
       </div>
 
       <div class="text-5xl f-bold mt-2 opacity-0" id="post-title" aria-hidden="true">
-        {actualFrontmatter.title}
+        {fmTitle}
       </div>
       <div class="text-neutral-100/70 opacity-0" id="post-description" aria-hidden="true">
-        {actualFrontmatter.description}
+        {fmDescription}
       </div>
 
       <div class="">
@@ -60,8 +70,8 @@ const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).
 
         <div class="flex gap-1 w-full overflow-scroll mb-2">
           {
-            (Array.isArray(actualFrontmatter.tags) ? actualFrontmatter.tags : []).map((tag: string) => (
-                <a
+            fmTags.map((tag) => (
+              <a
                 href={`/tags/${formatTag(tag)}`}
                 class="no-underline hover:no-underline text-sm bg-gray-700 text-neutral-100 rounded px-2 py-1 lowercase whitespace-nowrap"
               >
@@ -72,9 +82,9 @@ const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).
         </div>
       </div>
 
-        <a href={actualFrontmatter.projectURL || "hover:skew-y-12"}>
+      <a href={fmProjectURL || "hover:skew-y-12"}>
         <img
-          src={actualFrontmatter.image}
+          src={fmImage}
           alt=""
           class="border border-gray-500/50 w-full object-cover h-full opacity-0"
           id="post-image"
@@ -85,7 +95,7 @@ const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).
 
     <div class="flex items-center gap-2 w-full py-2">
       {
-        frontmatter.category === 'projects' && (
+        fmCategory === 'projects' && (
           <a href={`https://github.com/bjornleon-henry/${slug}`} class="w-full group">
             <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
               <div class="flex items-center justify-between gap-2">
@@ -100,7 +110,7 @@ const actualFrontmatter = frontmatter ?? (Astro.locals && (Astro.locals as any).
         )
       }
       {
-        frontmatter.category === 'projects' && (
+        fmCategory === 'projects' && (
           <a href={`https://github.com/bjornleon-henry/${slug}`} class="w-full group">
             <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
               <div class="flex items-center justify-between gap-2">

@@ -84,7 +84,7 @@ const GlobeComponent = () => {
       .attr("height", height);
 
     const waterColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-darkslate-500")
+      .getPropertyValue("#ffffff")
       .trim();
 
     const landColor = getComputedStyle(document.documentElement)

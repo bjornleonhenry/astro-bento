@@ -22,10 +22,10 @@ importers:
         version: 3.6.0
       '@astrojs/solid-js':
         specifier: ^5.1.1
-        version: 5.1.1(@types/node@24.5.2)(jiti@2.6.0)(solid-js@1.9.9)(yaml@2.8.1)
+        version: 5.1.1(@types/node@24.6.0)(jiti@2.6.0)(solid-js@1.9.9)(yaml@2.8.1)
       '@astrojs/vercel':
-        specifier: ^8.0.4
-        version: 8.2.8(astro@5.14.1(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1))(rollup@4.52.3)
+        specifier: ^8.2.8
+        version: 8.2.8(astro@5.14.1(@types/node@24.6.0)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1))(rollup@4.52.3)
       '@iconify-json/carbon':
         specifier: ^1.2.13
         version: 1.2.13
@@ -39,8 +39,8 @@ importers:
         specifier: ^1.2.9
         version: 1.2.9
       '@iconify-json/material-symbols':
-        specifier: ^1.2.39
-        version: 1.2.39
+        specifier: ^1.2.40
+        version: 1.2.40
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -67,7 +67,7 @@ importers:
         version: 1.2.0
       astro:
         specifier: ^5.14.1
-        version: 5.14.1(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1)
+        version: 5.14.1(@types/node@24.6.0)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1)
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -107,7 +107,7 @@ importers:
         version: 7.4.3
       '@unocss/astro':
         specifier: ^66.5.2
-        version: 66.5.2(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+        version: 66.5.2(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
       '@unocss/postcss':
         specifier: ^66.5.2
         version: 66.5.2(postcss@8.5.6)
@@ -125,7 +125,7 @@ importers:
         version: 2.17.0
       unocss:
         specifier: ^66.5.2
-        version: 66.5.2(postcss@8.5.6)(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+        version: 66.5.2(postcss@8.5.6)(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
 
 packages:
 
@@ -482,8 +482,8 @@ packages:
   '@iconify-json/logos@1.2.9':
     resolution: {integrity: sha512-G6VCdFnwZcrT6Eveq3m43oJfLw/CX8plwFcE+2jgv3fiGB64pTmnU7Yd1MNZ/eA+/Re2iEDhuCfSNOWTHwwK8w==}
 
-  '@iconify-json/material-symbols@1.2.39':
-    resolution: {integrity: sha512-spjiB1I5jPi6hV5b/QyC4zO8GRYGCbb6/DaHm754NJFqNli6bsYDpN4HYVl67XhU49rYljvJyNc/6lYEf+jokA==}
+  '@iconify-json/material-symbols@1.2.40':
+    resolution: {integrity: sha512-utXUazVsZ/cXJCKVIOdqLgwgmuy3Yx0dJtTk771d+O7NSdklUR42thl0H8L5db07I+TMS56BzPAf8vEDH68tdQ==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -992,8 +992,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@24.5.2':
-    resolution: {integrity: sha512-FYxk1I7wPv3K2XBaoyH2cTnocQEu8AOZ60hPbsyukMPLv5/5qr7V1i8PLHdl6Zf87I+xZXFvPCXYjiTFq+YSDQ==}
+  '@types/node@24.6.0':
+    resolution: {integrity: sha512-F1CBxgqwOMc4GKJ7eY22hWhBVQuMYTtqI8L0FcszYcpYX0fzfDGpez22Xau8Mgm7O9fI+zA/TYIdq3tGWfweBA==}
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
@@ -1360,8 +1360,8 @@ packages:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
 
-  caniuse-lite@1.0.30001745:
-    resolution: {integrity: sha512-ywt6i8FzvdgrrrGbr1jZVObnVv6adj+0if2/omv9cmR2oiZs30zL4DIyaptKcbOrBdOIc74QTMoJvSE2QHh5UQ==}
+  caniuse-lite@1.0.30001746:
+    resolution: {integrity: sha512-eA7Ys/DGw+pnkWWSE/id29f2IcPHVoE8wxtvE5JdvD2V28VTDPy1yEeo11Guz0sJ4ZeGRcm3uaTcAqK1LXaphA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2868,8 +2868,8 @@ packages:
   uncrypto@0.1.3:
     resolution: {integrity: sha512-Ql87qFHB3s/De2ClA9e0gsnS6zXG27SkTiSJwjCc9MebbfapQfuPzumMIUMi38ezPZVNFcHI9sUIepeQfw8J8Q==}
 
-  undici-types@7.12.0:
-    resolution: {integrity: sha512-goOacqME2GYyOZZfb5Lgtu+1IDmAlAEu5xnD3+xTzS10hT0vzpf0SPjkXwAw9Jm+4n/mQGDP3LO8CPbYROeBfQ==}
+  undici-types@7.13.0:
+    resolution: {integrity: sha512-Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ==}
 
   undici@6.21.3:
     resolution: {integrity: sha512-gBLkYIlEnSp8pFbT64yFgGE6UIB9tAkhukC23PmMDCe5Nd+cRqKxSjw5y54MK2AZMgZfJWMaNE4nYUHgi1XEOw==}
@@ -3134,11 +3134,11 @@ packages:
       '@volar/language-service':
         optional: true
 
-  vscode-css-languageservice@6.3.7:
-    resolution: {integrity: sha512-5TmXHKllPzfkPhW4UE9sODV3E0bIOJPOk+EERKllf2SmAczjfTmYeq5txco+N3jpF8KIZ6loj/JptpHBQuVQRA==}
+  vscode-css-languageservice@6.3.8:
+    resolution: {integrity: sha512-dBk/9ullEjIMbfSYAohGpDOisOVU1x2MQHOeU12ohGJQI7+r0PCimBwaa/pWpxl/vH4f7ibrBfxIZY3anGmHKQ==}
 
-  vscode-html-languageservice@5.5.1:
-    resolution: {integrity: sha512-/ZdEtsZ3OiFSyL00kmmu7crFV9KwWR+MgpzjsxO60DQH7sIfHZM892C/E4iDd11EKocr+NYuvOA4Y7uc3QzLEA==}
+  vscode-html-languageservice@5.5.2:
+    resolution: {integrity: sha512-QpaUhCjvb7U/qThOzo4V6grwsRE62Jk/vf8BRJZoABlMw3oplLB5uovrvcrLO9vYhkeMiSjyqLnCxbfHzzZqmw==}
 
   vscode-json-languageservice@4.1.8:
     resolution: {integrity: sha512-0vSpg6Xd9hfV+eZAaYN63xVVMOTmJ4GgHxXnkLCh+9RsQBkWKIghzLhW2B9ebfG+LQQg8uLtsQ2aUKjTgE+QOg==}
@@ -3343,7 +3343,7 @@ snapshots:
       volar-service-typescript: 0.0.62(@volar/language-service@2.4.23)
       volar-service-typescript-twoslash-queries: 0.0.62(@volar/language-service@2.4.23)
       volar-service-yaml: 0.0.62(@volar/language-service@2.4.23)
-      vscode-html-languageservice: 5.5.1
+      vscode-html-languageservice: 5.5.2
       vscode-uri: 3.1.0
     transitivePeerDependencies:
       - typescript
@@ -3389,11 +3389,11 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/solid-js@5.1.1(@types/node@24.5.2)(jiti@2.6.0)(solid-js@1.9.9)(yaml@2.8.1)':
+  '@astrojs/solid-js@5.1.1(@types/node@24.6.0)(jiti@2.6.0)(solid-js@1.9.9)(yaml@2.8.1)':
     dependencies:
       solid-js: 1.9.9
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
-      vite-plugin-solid: 2.11.8(solid-js@1.9.9)(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
+      vite-plugin-solid: 2.11.8(solid-js@1.9.9)(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - '@types/node'
@@ -3421,14 +3421,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@8.2.8(astro@5.14.1(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1))(rollup@4.52.3)':
+  '@astrojs/vercel@8.2.8(astro@5.14.1(@types/node@24.6.0)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1))(rollup@4.52.3)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.3
       '@vercel/analytics': 1.5.0
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.2(rollup@4.52.3)
       '@vercel/routing-utils': 5.1.1
-      astro: 5.14.1(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.6.0)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1)
       esbuild: 0.25.10
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -3705,7 +3705,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/material-symbols@1.2.39':
+  '@iconify-json/material-symbols@1.2.40':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4227,7 +4227,7 @@ snapshots:
 
   '@types/fontkit@2.0.8':
     dependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.0
 
   '@types/geojson@7946.0.16': {}
 
@@ -4247,9 +4247,9 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@24.5.2':
+  '@types/node@24.6.0':
     dependencies:
-      undici-types: 7.12.0
+      undici-types: 7.13.0
 
   '@types/sax@1.2.7':
     dependencies:
@@ -4257,25 +4257,25 @@ snapshots:
 
   '@types/tar@6.1.13':
     dependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.0
       minipass: 4.2.8
 
   '@types/unist@3.0.3': {}
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.0
     optional: true
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@unocss/astro@66.5.2(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))':
+  '@unocss/astro@66.5.2(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))':
     dependencies:
       '@unocss/core': 66.5.2
       '@unocss/reset': 66.5.2
-      '@unocss/vite': 66.5.2(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      '@unocss/vite': 66.5.2(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
     optionalDependencies:
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
 
   '@unocss/cli@66.5.2':
     dependencies:
@@ -4405,7 +4405,7 @@ snapshots:
     dependencies:
       '@unocss/core': 66.5.2
 
-  '@unocss/vite@66.5.2(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))':
+  '@unocss/vite@66.5.2(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))':
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@unocss/config': 66.5.2
@@ -4416,7 +4416,7 @@ snapshots:
       pathe: 2.0.3
       tinyglobby: 0.2.15
       unplugin-utils: 0.3.0
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
 
   '@vercel/analytics@1.5.0': {}
 
@@ -4573,7 +4573,7 @@ snapshots:
       valid-filename: 4.0.0
       zod: 3.25.76
 
-  astro@5.14.1(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1):
+  astro@5.14.1(@types/node@24.6.0)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@4.52.3)(typescript@5.9.2)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.3
@@ -4629,8 +4629,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.17.1(@vercel/functions@2.2.13)
       vfile: 6.0.3
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
-      vitefu: 1.1.1(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
+      vitefu: 1.1.1(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -4682,7 +4682,7 @@ snapshots:
   autoprefixer@10.4.21(postcss@8.5.6):
     dependencies:
       browserslist: 4.26.2
-      caniuse-lite: 1.0.30001745
+      caniuse-lite: 1.0.30001746
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -4762,7 +4762,7 @@ snapshots:
   browserslist@4.26.2:
     dependencies:
       baseline-browser-mapping: 2.8.9
-      caniuse-lite: 1.0.30001745
+      caniuse-lite: 1.0.30001746
       electron-to-chromium: 1.5.227
       node-releases: 2.0.21
       update-browserslist-db: 1.1.3(browserslist@4.26.2)
@@ -4778,7 +4778,7 @@ snapshots:
 
   camelcase@8.0.0: {}
 
-  caniuse-lite@1.0.30001745: {}
+  caniuse-lite@1.0.30001746: {}
 
   ccount@2.0.1: {}
 
@@ -6588,7 +6588,7 @@ snapshots:
 
   uncrypto@0.1.3: {}
 
-  undici-types@7.12.0: {}
+  undici-types@7.13.0: {}
 
   undici@6.21.3: {}
 
@@ -6660,9 +6660,9 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  unocss@66.5.2(postcss@8.5.6)(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)):
+  unocss@66.5.2(postcss@8.5.6)(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)):
     dependencies:
-      '@unocss/astro': 66.5.2(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      '@unocss/astro': 66.5.2(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
       '@unocss/cli': 66.5.2
       '@unocss/core': 66.5.2
       '@unocss/postcss': 66.5.2(postcss@8.5.6)
@@ -6680,9 +6680,9 @@ snapshots:
       '@unocss/transformer-compile-class': 66.5.2
       '@unocss/transformer-directives': 66.5.2
       '@unocss/transformer-variant-group': 66.5.2
-      '@unocss/vite': 66.5.2(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      '@unocss/vite': 66.5.2(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
     optionalDependencies:
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
     transitivePeerDependencies:
       - postcss
       - supports-color
@@ -6737,7 +6737,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-solid@2.11.8(solid-js@1.9.9)(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)):
+  vite-plugin-solid@2.11.8(solid-js@1.9.9)(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)):
     dependencies:
       '@babel/core': 7.28.4
       '@types/babel__core': 7.20.5
@@ -6745,12 +6745,12 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.9
       solid-refresh: 0.6.3(solid-js@1.9.9)
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
-      vitefu: 1.1.1(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1))
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
+      vitefu: 1.1.1(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1))
     transitivePeerDependencies:
       - supports-color
 
-  vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1):
+  vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1):
     dependencies:
       esbuild: 0.25.10
       fdir: 6.5.0(picomatch@4.0.3)
@@ -6759,18 +6759,18 @@ snapshots:
       rollup: 4.52.3
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.0
       fsevents: 2.3.3
       jiti: 2.6.0
       yaml: 2.8.1
 
-  vitefu@1.1.1(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)):
+  vitefu@1.1.1(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)):
     optionalDependencies:
-      vite: 6.3.6(@types/node@24.5.2)(jiti@2.6.0)(yaml@2.8.1)
+      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.0)(yaml@2.8.1)
 
   volar-service-css@0.0.62(@volar/language-service@2.4.23):
     dependencies:
-      vscode-css-languageservice: 6.3.7
+      vscode-css-languageservice: 6.3.8
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
     optionalDependencies:
@@ -6787,7 +6787,7 @@ snapshots:
 
   volar-service-html@0.0.62(@volar/language-service@2.4.23):
     dependencies:
-      vscode-html-languageservice: 5.5.1
+      vscode-html-languageservice: 5.5.2
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
     optionalDependencies:
@@ -6823,14 +6823,14 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.23
 
-  vscode-css-languageservice@6.3.7:
+  vscode-css-languageservice@6.3.8:
     dependencies:
       '@vscode/l10n': 0.0.18
       vscode-languageserver-textdocument: 1.0.12
       vscode-languageserver-types: 3.17.5
       vscode-uri: 3.1.0
 
-  vscode-html-languageservice@5.5.1:
+  vscode-html-languageservice@5.5.2:
     dependencies:
       '@vscode/l10n': 0.0.18
       vscode-languageserver-textdocument: 1.0.12

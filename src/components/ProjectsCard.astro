@@ -3,6 +3,8 @@ import Card from "./Card/index.astro";
 import { getCollection } from "astro:content";
 import { formatTimeForLosAngeles } from "../lib/helpers";
 
+import { createSignal, onMount, onCleanup } from "solid-js";
+const [isSwitching, setIsSwitching] = createSignal(false);
 // Fetch and filter posts that are in the 'now' category
 const allPosts = await getCollection("posts");
 const nowPosts = allPosts.filter((post) => post.data.category === "projects");
@@ -13,8 +15,24 @@ nowPosts.sort(
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 
+let interval: ReturnType<typeof setInterval>;
+let updateDateInterval = () => {
+  setIsSwitching(true);
+  setTimeout(() => {
+    setIsSwitching(false);
+  }, 500); // Duration of the pulse effect
+};
 // Take the first item from the sorted array as the most recent post
 const mostRecentProjectPost = nowPosts[0] || null; // This ensures there is a fallback if no posts are found
+
+  onMount(() => {
+    interval = setInterval(updateDateInterval, 1000);
+  });
+
+  onCleanup(() => {
+    clearInterval(interval);
+  });
+
 ---
 
 <Card
@@ -22,6 +40,7 @@ const mostRecentProjectPost = nowPosts[0] || null; // This ensures there is a fa
   rowSpan="md:row-span-2"
   title="Projects"
   href="/projects"
+  className="transition-transform duration-300 md:hover:border-gray-500 align-start flex-none justify-start relative w-full transition-transform duration-300 hover:shadow-blue-500/20 hover:scale-[1.02] hover:-translate-y-1 hover:border-gray-500  cursor-pointer transition-all duration-300 hover:scale-125 hover:rotate-12 active:scale-110"
 >
   <div class="group">
     <div class="line-clamp-4">
@@ -33,7 +52,7 @@ const mostRecentProjectPost = nowPosts[0] || null; // This ensures there is a fa
             rel="noopener noreferrer"
             class="text-neutral-100 md:text-neutral-100/70 text-sm f-light md:group-hover:text-neutral-100 transition-colors duration-300"
           >
-            <div class="group/newPost mt-5">
+            <div class="group/newPost mt-3">
               <div class="f-bold text-lg text-neutral-100">
                 {mostRecentProjectPost.data.title}
               </div>

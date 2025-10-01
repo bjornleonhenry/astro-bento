@@ -12,65 +12,8 @@ const { title, description, page, slug, frontmatter } = Astro.props;
 const image =
   page === "travel"
     ? `${Astro.url.origin}/globe_preview.webp"`
-    : `images/og-image.png`;
+    : `${Astro.url.origin}/og-image.png`;
 
-const schema =
-  page !== "blog"
-    ? {
-        "@context": "http://schema.org",
-        "@type": "Person",
-        name: "Benti",
-        url: "https://bjorn-leon-henry.github.io",
-        sameAs: [
-          "https://www.linkedin.com/",
-          "https://github.com/bjornleonhenry",
-        ],
-        image: "images/bjornleonhenry.png",
-        jobTitle: "Freelance Frontend Developer",
-        worksFor: {
-          "@type": "Organization",
-          name: "Self-Employed",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Boulder, CO, CA",
-            addressCountry: "US",
-          },
-        },
-        nationality: {
-          "@type": "Country",
-          name: "USA",
-        },
-      }
-    : {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": `https://bjorn-leon-henry.github.io/blog/${slug}`,
-        },
-        headline: frontmatter?.title || title,
-        description: frontmatter?.description || title,
-        image: "images/bjornleonhenry.webp", //TODO: dynamic
-        author: {
-          "@type": "Person",
-          name: "Bento",
-          url: "https://bjorn-leon-henry.github.io",
-          sameAs: [
-            "https://www.linkedin.com/",
-            "https://github.com/bjornleonhenry",
-          ],
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "@bjornleonhenry",
-          logo: {
-            "@type": "ImageObject",
-            url: "https://github.com/bjornleonhenry",
-          },
-        },
-        datePublished: frontmatter?.pubDate || new Date().toISOString(),
-        dateModified: frontmatter?.pubDate || new Date().toISOString(),
-      };
 ---
 
 <!doctype html>
@@ -80,242 +23,51 @@ const schema =
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title || "Bjorn Leon Henry"}</title>
-    <meta name="description" content={description || "Personal portfolio and blog of Bjorn Leon Henry - Full-stack developer specializing in modern web technologies, AI, and creative coding projects."} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="robots" content="/favicon/sitemap-index.xml" />
     <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description || "Personal portfolio and blog of Bjorn Leon Henry - Full-stack developer specializing in modern web technologies, AI, and creative coding projects."} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.origin} />
-    <meta property="og:site_name" content="Bjorn Leon Henry" />
     <meta
       property="og:image"
-      content={image || `${Astro.url.origin}/og-image.png`}
+      content={image || "https://github.com/og-image.png"}
     />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- Twitter Card tags -->
+    <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description || "Personal portfolio and blog of Bjorn Leon Henry - Full-stack developer specializing in modern web technologies, AI, and creative coding projects."} />
+    <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content={image || `${Astro.url.origin}/og-image.png`}
+      content={image || "https://github.com/og-image.png"}
     />
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-    <style>
-      /* Prevent flash of unstyled content - production-ready approach */
-      .content-hidden {
-        display: none !important;
-      }
-      .content-visible {
-        display: block;
-      }
+    <link rel="preconnect" href="https://cdn.fontshare.com" />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Light.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+ 
 
-      /* Basic layout and colors matching final design */
-      body {
-        background-color: #1a1a1a;
-        color: #ffffff;
-        font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-      }
-
-      /* Essential UnoCSS-like styles for flash prevention */
-      .bg-darkslate-400 {
-        background-color: #1a1a1a;
-      }
-
-      .text-neutral-100 {
-        color: #ffffff;
-      }
-
-      .text-neutral-100\/50 {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      .border-gray-500 {
-        border-color: #6b7280;
-      }
-
-      .border-t {
-        border-top-width: 1px;
-      }
-
-      .border-b-none {
-        border-bottom-width: 0;
-      }
-
-      .rounded {
-        border-radius: 0.25rem;
-      }
-
-      .rounded-b-none {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      .opacity-0 {
-        opacity: 0;
-      }
-
-      .opacity-1 {
-        opacity: 1;
-      }
-
-      /* Layout utilities */
-      .flex {
-        display: flex;
-      }
-
-      .flex-col {
-        flex-direction: column;
-      }
-
-      .justify-center {
-        justify-content: center;
-      }
-
-      .justify-between {
-        justify-content: space-between;
-      }
-
-      .items-center {
-        align-items: center;
-      }
-
-      .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .max-w-2xl {
-        max-width: 42rem;
-      }
-
-      .w-full {
-        width: 100%;
-      }
-
-      .w-fit {
-        width: fit-content;
-      }
-
-      .p-2 {
-        padding: 0.5rem;
-      }
-
-      .py-5 {
-        padding-top: 1.25rem;
-        padding-bottom: 1.25rem;
-      }
-
-      .px-4 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .py-1 {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-      }
-
-      .mt-2 {
-        margin-top: 0.5rem;
-      }
-
-      .mb-10 {
-        margin-bottom: 2.5rem;
-      }
-
-      .gap-2 {
-        gap: 0.5rem;
-      }
-
-      /* Typography */
-      .text-sm {
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-      }
-
-      .text-5xl {
-        font-size: 3rem;
-        line-height: 1;
-      }
-
-      .font-bold {
-        font-weight: 700;
-      }
-
-      .capitalize {
-        text-transform: capitalize;
-      }
-
-      .decoration-none {
-        text-decoration: none;
-      }
-
-      /* Prose styles for content */
-      .prose {
-        color: var(--tw-prose-body);
-        max-width: none;
-      }
-
-      .prose-invert {
-        --tw-prose-body: #ffffff;
-        --tw-prose-headings: #ffffff;
-        --tw-prose-lead: #ffffff;
-        --tw-prose-links: #ffffff;
-        --tw-prose-bold: #ffffff;
-        --tw-prose-counters: #ffffff;
-        --tw-prose-bullets: #ffffff;
-        --tw-prose-hr: #ffffff;
-        --tw-prose-quotes: #ffffff;
-        --tw-prose-quote-borders: #ffffff;
-        --tw-prose-captions: #ffffff;
-        --tw-prose-code: #ffffff;
-        --tw-prose-pre-code: #ffffff;
-        --tw-prose-pre-bg: #1f2937;
-        --tw-prose-th-borders: #374151;
-        --tw-prose-td-borders: #374151;
-      }
-
-      .prose-p\:text-purple-500 p {
-        color: #a855f7;
-      }
-
-      .prose-slate {
-        --tw-prose-body: #64748b;
-        --tw-prose-headings: #1e293b;
-        --tw-prose-lead: #64748b;
-        --tw-prose-links: #3b82f6;
-        --tw-prose-bold: #1e293b;
-        --tw-prose-counters: #64748b;
-        --tw-prose-bullets: #64748b;
-        --tw-prose-hr: #e2e8f0;
-        --tw-prose-quotes: #1e293b;
-        --tw-prose-quote-borders: #e2e8f0;
-        --tw-prose-captions: #64748b;
-        --tw-prose-code: #1e293b;
-        --tw-prose-pre-code: #e2e8f0;
-        --tw-prose-pre-bg: #1e293b;
-        --tw-prose-th-borders: #cbd5e1;
-        --tw-prose-td-borders: #cbd5e1;
-      }
-
-      /* Hide scrollbar */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Basic reset */
-      * {
-        box-sizing: border-box;
-      }
     </style>
 
     <!-- Font preloading -->
@@ -342,82 +94,14 @@ const schema =
     />
   </head>
 
-  <body class="bg-darkslate-400 flex flex-col justify-center items-center content-hidden">
+  <body class="bg-darkslate-400 flex flex-col justify-center items-center" style="min-height: 100vh;">
     <slot name="loader" />
     <slot />
-    <script>
-      (function () {
-        // Guard DOM access for SSR/type-checking. Use a local any reference.
-        const doc: any = typeof document !== 'undefined' ? document : null;
-
-        function showContent() {
-          try {
-            if (doc && doc.body) {
-              doc.body.classList.remove('content-hidden');
-              doc.body.classList.add('content-visible');
-            }
-            console.log('FOUC: Showing content');
-          } catch (e) {
-            console.warn('FOUC: showContent error', e);
-          }
-        }
-
-        console.log('FOUC: Script loaded');
-
-        if (!doc) {
-          // Not in a browser environment — nothing to do here
-          return;
-        }
-
-        try {
-          // Immediate check - if fonts are already loaded
-          if (doc.fonts && doc.fonts.status === 'loaded') {
-            console.log('FOUC: Fonts already loaded');
-            setTimeout(showContent, 10);
-          }
-          // Check if fonts are loading
-          else if ('fonts' in doc) {
-            console.log('FOUC: Waiting for fonts');
-            (doc.fonts.ready || Promise.resolve()).then(function () {
-              console.log('FOUC: Fonts loaded via Font Loading API');
-              setTimeout(showContent, 50);
-            }).catch(function () {
-              console.log('FOUC: Font loading failed, showing content anyway');
-              setTimeout(showContent, 100);
-            });
-          }
-          // Fallback for browsers without Font Loading API
-          else {
-            console.log('FOUC: No Font Loading API, using DOMContentLoaded');
-            if (doc.readyState === 'loading') {
-              doc.addEventListener('DOMContentLoaded', function () {
-                console.log('FOUC: DOMContentLoaded fired');
-                setTimeout(showContent, 100);
-              });
-            } else {
-              console.log('FOUC: Document already loaded');
-              setTimeout(showContent, 100);
-            }
-          }
-        } catch (e) {
-          console.warn('FOUC: script error', e);
-          // Ensure content shows eventually
-          setTimeout(showContent, 3000);
-        }
-
-        // Safety fallback - show content after 3 seconds regardless
-        setTimeout(function () {
-          console.log('FOUC: Safety timeout reached');
-          showContent();
-        }, 3000);
-      })();
-    </script>
-
-  </body>  
+  </body>
   <style is:global>
     @font-face {
       font-family: "Ubuntu";
-      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype");
+      src: url("/fonts/Ubuntu-Regular.ttf") format("truetype-variations");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -425,7 +109,7 @@ const schema =
     }
     @font-face {
       font-family: "Ubuntu-Bold";
-      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
+      src: url("/fonts/Ubuntu-Bold.ttf") format("truetype-variations");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -433,7 +117,7 @@ const schema =
     }
     @font-face {
       font-family: "Ubuntu-Light";
-      src: url("/fonts/Ubuntu-Light.ttf") format("truetype");
+      src: url("/fonts/Ubuntu-Light.ttf") format("truetype-variations");
       font-weight: normal;
       font-style: normal;
       font-display: swap;

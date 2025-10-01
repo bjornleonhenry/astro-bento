@@ -22,21 +22,17 @@ export function getCurrentTimeInLosAngeles(): Date {
 }
 
 export function formatTimeForLosAngeles(date: Date): string {
+  // Use Intl with a proper Los Angeles timezone and include the short timezone name
   const options: Intl.DateTimeFormatOptions = {
     hour: "numeric",
     minute: "2-digit",
     second: "2-digit",
-    hour12: true, // This will format the time in 12-hour format with AM/PM
+    hour12: true,
     timeZone: "America/Los_Angeles",
+    timeZoneName: "short",
   };
 
-  let formattedTime = new Intl.DateTimeFormat("en-US", options).format(date);
-
-  // Append the time zone abbreviation. For simplicity, here I'm just appending "PST" or "PDT" depending on Daylight Saving Time.
-  const timezoneSuffix = isDST(date) ? " PDT" : " PST";
-  formattedTime += timezoneSuffix;
-
-  return formattedTime;
+  return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
 export function formatDate(date: Date): string {

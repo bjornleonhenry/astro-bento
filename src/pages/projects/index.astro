@@ -10,6 +10,14 @@ const posts = (await getCollection("posts"))?.sort(
     (blogEntryB.data.pubDate || new Date()).getTime() -
     (blogEntryA.data.pubDate || new Date()).getTime()
 );
+
+// Only show posts that are in the "projects" category and explicitly active
+const projectPosts = posts
+  ?.filter((post) => post.data.category === "projects" && post.data.active !== false)
+  .sort(
+    (a, b) =>
+      (b.data.pubDate || new Date()).getTime() - (a.data.pubDate || new Date()).getTime()
+  );
 ---
 
 <script>
@@ -52,34 +60,28 @@ const posts = (await getCollection("posts"))?.sort(
     </h1>
 
     <div class="f-light mb-4 text-neutral-100/50">
-      <span class="f-bold"
-        >{
-          JSON.stringify(
-            posts?.filter((post) => post.data.category === "projects").length
-          )
-        }</span
-      >
+      <span class="f-bold">
+        {JSON.stringify(projectPosts?.length)}
+      </span>
       Personal projects and experiments
     </div>
 
     <div class="w-full">
       <ul>
         {
-          posts
-            ?.filter((post) => post.data.category === "projects")
-            .map((post) => (
-              <div class="post-item opacity-0">
-                <PostItem
-                  title={post.data.title || "No title"}
-                  description={post.data.description || "No description"}
-                  date={post.data.pubDate || new Date()}
-                  url={post.slug}
-                  category={post.data.category || "No category"}
-                  tags={post.data.tags || []}
-                  image={post.data.image || ""}
-                />
-              </div>
-            ))
+          projectPosts?.map((post) => (
+            <div class="post-item opacity-0">
+              <PostItem
+                title={post.data.title || "No title"}
+                description={post.data.description || "No description"}
+                date={post.data.pubDate || new Date()}
+                url={post.slug}
+                category={post.data.category || "No category"}
+                tags={post.data.tags || []}
+                image={post.data.image || ""}
+              />
+            </div>
+          ))
         }
       </ul>
     </div>
