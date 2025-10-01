@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2022-12-30T00:00:00Z
 title: Using Pocketbase with SvelteKit
 description: A guide to getting started with Pocketbase and SvelteKit.

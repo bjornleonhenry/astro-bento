@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2020-01-16T12:00:00Z
 title: AI Finance SaaS Platform
 description: A modern web application built with cutting-edge technologies.

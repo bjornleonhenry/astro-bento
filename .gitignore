@@ -58,3 +58,5 @@ ASTRO.md
 dist/
 node_modules/
 .codacy/
+backup/
+backup/*

@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2020-12-08T12:00:00Z
 title: Full-Stack Chat Application
 description: A modern web application built with cutting-edge technologies.

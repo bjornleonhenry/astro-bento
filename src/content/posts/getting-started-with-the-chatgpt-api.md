@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2023-01-10T00:00:00Z
 title: Getting started with the ChatGPT API
 description: A guide to getting started with the ChatGPT API.

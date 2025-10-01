@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2020-04-07T12:00:00Z
 title: 3D Animated Portfolio Website
 description: A modern web application built with cutting-edge technologies.

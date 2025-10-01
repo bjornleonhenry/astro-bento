@@ -6,6 +6,8 @@ const posts = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     category: z.string(),
+  // optional frontmatter flag to mark a post/project as active
+  active: z.boolean().optional(),
     image: z.string(),
     tags: z.array(z.string()),
     projectURL: z.string().optional(),

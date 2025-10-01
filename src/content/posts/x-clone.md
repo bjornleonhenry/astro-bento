@@ -1,4 +1,6 @@
 ---
+active: true
+featured: true
 pubDate: 2023-03-03T12:00:00Z
 title: X Clone - Social Media Platform
 description: A modern web application built with cutting-edge technologies.
