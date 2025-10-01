@@ -39,8 +39,14 @@ export async function GET({ params, request }: { params: any; request: any }) {
       console.warn('Could not log request headers for fetchProjectsFeed', e);
     }
     const allPosts = await getCollection("posts");
+    const url = new URL(request.url);
+    const featuredOnly = url.searchParams.get('featured') === 'true';
+
     const nowPosts = allPosts
-      ?.filter((post: any) => post.data.category === "projects")
+      ?.filter((post: any) =>
+        post.data.category === "projects" && post.data.active !== false
+      )
+      .filter((post: any) => (featuredOnly ? post.data.featured === true : true))
       .sort(
         (blogEntryA: any, blogEntryB: any) =>
           (blogEntryB.data.pubDate || new Date()).getTime() -

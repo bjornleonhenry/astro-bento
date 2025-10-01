@@ -44,7 +44,7 @@ export default function TimeZoneCard() {
     const baseTime = formatUserTime(now, tzToUse);
     setTimeText(`${baseTime}${shortName ? ' ' + shortName : ''}`);
     // Debug log to trace timezone and formatted values
-    console.debug("updateDateTime -> now:", now.toISOString(), "tz:", tzToUse, "weekDay:", wd, "monthDay:", md, "timeText:", formatUserTime(now, tzToUse), "tzName:", shortName);
+    // console.debug("updateDateTime -> now:", now.toISOString(), "tz:", tzToUse, "weekDay:", wd, "monthDay:", md, "timeText:", formatUserTime(now, tzToUse), "tzName:", shortName);
   }
 
 
@@ -64,7 +64,7 @@ export default function TimeZoneCard() {
 
         // Fetch Stockholm weather
         const weatherData = await getWeatherDataFree(59.3293, 18.0686);
-        console.log("Switching to Stockholm weather:", weatherData);
+      //  console.log("Switching to Stockholm weather:", weatherData);
         setWeatherIcon(weatherData.icon);
         setWeatherTemp(`${weatherData.temp}°`);
 
@@ -109,11 +109,11 @@ export default function TimeZoneCard() {
             }
 
             isUserLocation = true;
-            console.debug("User location set -> location:", locationName, "country:", countryCode, "weather.timezone:", weatherData.timezone, "userTimezone:", userTimezone);
+          //  console.debug("User location set -> location:", locationName, "country:", countryCode, "weather.timezone:", weatherData.timezone, "userTimezone:", userTimezone);
             // Recompute date/time strings using the user's timezone immediately
             updateDateTime(userTimezone);
           } catch (error) {
-            console.error("Geolocation error:", error);
+          //  console.error("Geolocation error:", error);
             // Fall back to Stockholm
             setCodeCookText("Code");
             setLocation("Stockholm");
@@ -126,7 +126,7 @@ export default function TimeZoneCard() {
 
             isUserLocation = false;
             userTimezone = "Europe/Stockholm";
-            console.debug("Geolocation fallback to Stockholm -> userTimezone:", userTimezone);
+          //  console.debug("Geolocation fallback to Stockholm -> userTimezone:", userTimezone);
             updateDateTime(userTimezone);
           }
         } else {
@@ -142,7 +142,7 @@ export default function TimeZoneCard() {
 
           isUserLocation = false;
           userTimezone = "Europe/Stockholm";
-          console.debug("Geolocation not supported -> fallback userTimezone:", userTimezone);
+        //  console.debug("Geolocation not supported -> fallback userTimezone:", userTimezone);
           updateDateTime(userTimezone);
         }
       }
@@ -161,7 +161,7 @@ export default function TimeZoneCard() {
       setFlag("🇸🇪");
 
       const weatherData = await getWeatherDataFree(59.3293, 18.0686);
-      console.log("Geolocation not supported, Stockholm weather:", weatherData);
+    //  console.log("Geolocation not supported, Stockholm weather:", weatherData);
       setWeatherIcon(weatherData.icon);
       setWeatherTemp(`${weatherData.temp}°`);
       return;
@@ -171,7 +171,7 @@ export default function TimeZoneCard() {
       async (position) => {
         setIsSwitching(true);
         try {
-          console.log("Location accepted, updating...");
+        //  console.log("Location accepted, updating...");
           const { latitude, longitude } = position.coords;
 
           // Fetch all required data in parallel
@@ -196,17 +196,17 @@ export default function TimeZoneCard() {
           // Update date/time once with the final timezone
           updateDateTime(userTimezone);
 
-          console.log("Updated values:", {
-            isUserLocation,
-            location: locationName,
-            country: countryCode,
-            flag: getCountryFlag(countryCode),
-            weatherIcon: weatherData.icon,
-            weatherTemp: weatherData.temp,
-            timezone: userTimezone,
-          });
+        //   console.log("Updated values:", {
+        //    isUserLocation,
+        //    location: locationName,
+        //    country: countryCode,
+        //    flag: getCountryFlag(countryCode),
+        //    weatherIcon: weatherData.icon,
+        //    weatherTemp: weatherData.temp,
+        //    timezone: userTimezone,
+        //  });
         } catch (err) {
-          console.error("Error updating user location:", err);
+        //  console.error("Error updating user location:", err);
           // fallback to Stockholm
           isUserLocation = false;
           setCodeCookText("Code");
@@ -223,7 +223,7 @@ export default function TimeZoneCard() {
         }
       },
       async (error) => {
-        console.error("Geolocation error:", error);
+      // .error("Geolocation error:", error);
         isUserLocation = false;
         setCodeCookText("Code");
         setLocation("Stockholm");
@@ -255,7 +255,7 @@ export default function TimeZoneCard() {
           }
         }
       } catch (e) {
-        console.error('Error fetching default weather:', e);
+      //  console.error('Error fetching default weather:', e);
       }
     })();
 
