@@ -1,37 +1,33 @@
 ---
-pubDate: 2020-01-15T12:00:00Z
-title: WDS Shadcn Registry - Accessible Component Library
+pubDate: 2020-01-16T12:00:00Z
+title: Advanced MERN AI Finance SaaS Platform
 description: A modern web application built with cutting-edge technologies.
 excerpt: A modern web application built with cutting-edge technologies.
 category: projects
-image: "/images/wds-shadcn-registry.svg"
+image: "/images/ai-financial-saas-platform.svg"
 tags:
-- - React
-- - TypeScript
-- - Tailwind CSS
-- - Shadcn/ui
-- - Radix UI
-projectURL: "https://wds-shadcn-registry.vercel.app"
-repoURL: "https://github.com/bjornleonhenry/wds-shadcn-registry"
+- * 🔐 Authentication
+- ## 🔧 How to Use This Project
+- ### 🚀 Installation & Setup
+projectURL: "https://ai-financial-saas-platform.vercel.app"
+repoURL: "https://github.com/bjornleonhenry/ai-financial-saas-platform"
 ---
 
-### What's included in wds-shadcn-registry?
+### What's included in ai-financial-saas-platform?
 
 A modern web application built with cutting-edge technologies.
 
 ## Tech Stack
 
-- React
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui
-- Radix UI
+* 🔐 Authentication
+## 🔧 How to Use This Project
+### 🚀 Installation & Setup
 
 ## Features
 
 ### &nbsp;
 
-![Screenshot 1](/images/wds-shadcn-registry-1.webp)
+![Screenshot 1](/images/ai-financial-saas-platform-1.webp)
 
 ### &nbsp;
 
@@ -44,8 +40,8 @@ A modern web application built with cutting-edge technologies.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/bjornleonhenry/wds-shadcn-registry.git
-cd wds-shadcn-registry
+git clone https://github.com/bjornleonhenry/ai-financial-saas-platform.git
+cd ai-financial-saas-platform
 ```
 
 2. Install dependencies:
