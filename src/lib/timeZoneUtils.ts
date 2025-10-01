@@ -1,11 +1,13 @@
 // Helper functions for TimeZoneCard
 
-export function formatUserTime(date: Date, isUserLocation: boolean, userTimezone: string): string {
-  const timezone = isUserLocation ? userTimezone : "Europe/Stockholm";
+export function formatUserTime(date: Date, timezone?: string): string {
+  const zone = timezone || "Europe/Stockholm";
   return date.toLocaleTimeString("en-US", {
-    hour: "numeric", minute: "2-digit", second: "2-digit", hour12: false,
-    timeZone: timezone,
-  //  timeZoneName: "none",
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZone: zone,
   });
 }
 
@@ -24,13 +26,21 @@ export function getCountryName(countryCode: string): string {
   }
 }
 
-export function formatDate(date: Date): { weekDay: string; monthDay: string } {
+export function formatDate(date: Date, timeZone?: string): { weekDay: string; monthDay: string } {
   const options: Intl.DateTimeFormatOptions = {
-    weekday: "long", month: "long", day: "numeric",
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    timeZone: timeZone,
   };
+  // Use provided timeZone when formatting so the date parts reflect the target zone
   const formatted = date.toLocaleDateString("en-US", options);
-  const [weekDay, month, day] = formatted.split(" ");
-  return { weekDay: weekDay.replace(",", ""), monthDay: `${month} ${day}` };
+  const parts = formatted.split(" ");
+  // formatted looks like: "Thursday, September 15" -> parts[0] = "Thursday," parts[1] = "September" parts[2] = "15"
+  const weekDay = (parts[0] || "").replace(",", "");
+  const month = parts[1] || "";
+  const day = parts[2] || "";
+  return { weekDay, monthDay: `${month} ${day}` };
 }
 
 export async function getLocationName(lat: number, lon: number): Promise<string> {
@@ -103,19 +113,32 @@ export function getWeatherIconFromCode(code: number, isDay: boolean): string {
 export async function getWeatherDataFree(
   lat: number,
   lon: number
-): Promise<{ icon: string; temp: number }> {
+): Promise<{ icon: string; temp: number; timezone?: string }> {
   try {
+    // Ask Open-Meteo to provide a timezone identifier appropriate for coordinates
     const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`
     );
     const data = await response.json();
     const temp = data.current_weather.temperature;
     const code = data.current_weather.weathercode;
     const isDay = data.current_weather.is_day;
     const icon = getWeatherIconFromCode(code, isDay);
-    return { icon, temp: Math.round(temp) };
+    // open-meteo returns a timezone field like "Europe/Stockholm"
+    const timezone = data.timezone;
+    return { icon, temp: Math.round(temp), timezone };
   } catch (error) {
     console.error("Error fetching weather data:", error);
     return { icon: "🌤️", temp: 20 };
+  }
+}
+
+export function getTimeZoneName(timeZone?: string): string {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: timeZone || 'Europe/Stockholm', timeZoneName: 'short' }).formatToParts(new Date());
+    const tzPart = parts.find(p => p.type === 'timeZoneName');
+    return tzPart ? tzPart.value : '';
+  } catch (e) {
+    return '';
   }
 }

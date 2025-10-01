@@ -7,6 +7,7 @@ import {
   getCountryCode,
   getWeatherIcon,
   getWeatherDataFree,
+  getTimeZoneName,
   getCountryName,
 } from "../lib/timeZoneUtils";
 
@@ -18,26 +19,32 @@ export default function TimeZoneCard() {
   const [country, setCountry] = createSignal("SE");
   const [flag, setFlag] = createSignal("🇸🇪");
   const [timeText, setTimeText] = createSignal("15:30:45 CEST");
-  const [weatherIcon, setWeatherIcon] = createSignal("🌤️");
-  const [weatherTemp, setWeatherTemp] = createSignal("7°");
+  const [weatherIcon, setWeatherIcon] = createSignal("");
+  const [weatherTemp, setWeatherTemp] = createSignal("");
   const [showFullCountry, setShowFullCountry] = createSignal(true);
-  const [showCountryText, setShowCountryText] = createSignal(false);
+  const [showCountryText, setShowCountryText] = createSignal(true);
   const [currentDate, setCurrentDate] = createSignal(new Date());
   const [codeCookText, setCodeCookText] = createSignal("Code");
   const [isSwitching, setIsSwitching] = createSignal(false);
 
   let isUserLocation = false;
-  let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // start with default timezone for Stockholm
+  let userTimezone = "Europe/Stockholm";
   let interval: ReturnType<typeof setInterval>;
 
 
-  function updateDateTime() {
+  function updateDateTime(timeZone?: string) {
     const now = new Date();
     setCurrentDate(now);
-    const { weekDay: wd, monthDay: md } = formatDate(now);
+    const { weekDay: wd, monthDay: md } = formatDate(now, timeZone);
     setWeekDay(wd);
     setMonthDay(md);
-    setTimeText(formatUserTime(now, isUserLocation, userTimezone));
+    const tzToUse = timeZone || userTimezone;
+    const shortName = getTimeZoneName(tzToUse);
+    const baseTime = formatUserTime(now, tzToUse);
+    setTimeText(`${baseTime}${shortName ? ' ' + shortName : ''}`);
+    // Debug log to trace timezone and formatted values
+    console.debug("updateDateTime -> now:", now.toISOString(), "tz:", tzToUse, "weekDay:", wd, "monthDay:", md, "timeText:", formatUserTime(now, tzToUse), "tzName:", shortName);
   }
 
 
@@ -48,8 +55,8 @@ export default function TimeZoneCard() {
     setIsSwitching(true);
 
     try {
-      if (isUserLocation) {
-        // Switching FROM user location TO default
+  if (isUserLocation) {
+  // Switching FROM user location TO default
         setCodeCookText("Code");
         setLocation("Stockholm");
         setCountry("SE");
@@ -62,6 +69,9 @@ export default function TimeZoneCard() {
         setWeatherTemp(`${weatherData.temp}°`);
 
         isUserLocation = false;
+        // Immediately refresh displayed date/time for default timezone
+        userTimezone = "Europe/Stockholm";
+        updateDateTime(userTimezone);
       } else {
         // Switching FROM default TO user location
         setCodeCookText("Cook");
@@ -90,7 +100,18 @@ export default function TimeZoneCard() {
             setWeatherIcon(weatherData.icon);
             setWeatherTemp(`${weatherData.temp}°`);
 
+            // If the weather API returned a timezone, use that as the displayed timezone.
+            if (weatherData.timezone) {
+              userTimezone = weatherData.timezone;
+            } else {
+              // fallback to browser-resolved timezone
+              userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            }
+
             isUserLocation = true;
+            console.debug("User location set -> location:", locationName, "country:", countryCode, "weather.timezone:", weatherData.timezone, "userTimezone:", userTimezone);
+            // Recompute date/time strings using the user's timezone immediately
+            updateDateTime(userTimezone);
           } catch (error) {
             console.error("Geolocation error:", error);
             // Fall back to Stockholm
@@ -104,6 +125,9 @@ export default function TimeZoneCard() {
             setWeatherTemp(`${weatherData.temp}°`);
 
             isUserLocation = false;
+            userTimezone = "Europe/Stockholm";
+            console.debug("Geolocation fallback to Stockholm -> userTimezone:", userTimezone);
+            updateDateTime(userTimezone);
           }
         } else {
           // Geolocation not supported, stay on default
@@ -117,6 +141,9 @@ export default function TimeZoneCard() {
           setWeatherTemp(`${weatherData.temp}°`);
 
           isUserLocation = false;
+          userTimezone = "Europe/Stockholm";
+          console.debug("Geolocation not supported -> fallback userTimezone:", userTimezone);
+          updateDateTime(userTimezone);
         }
       }
     } finally {
@@ -125,47 +152,7 @@ export default function TimeZoneCard() {
   }
 
   async function getUserLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          console.log("Location accepted, updating...");
-          const { latitude, longitude } = position.coords;
-          const locationName = await getLocationName(latitude, longitude);
-          const countryCode = await getCountryCode(latitude, longitude);
-
-          isUserLocation = true;
-          setCodeCookText("Cook");
-          setLocation(locationName);
-          setCountry(countryCode);
-          setFlag(getCountryFlag(countryCode));
-          const weatherData = await getWeatherDataFree(latitude, longitude);
-          console.log("User location weather:", weatherData);
-          setWeatherIcon(weatherData.icon);
-          setWeatherTemp(`${weatherData.temp}°`);
-
-          console.log("Updated values:", {
-            isUserLocation,
-            location: locationName,
-            country: countryCode,
-            flag: getCountryFlag(countryCode),
-            weatherIcon: weatherData.icon,
-            weatherTemp: weatherData.temp,
-          });
-        },
-        async (error) => {
-          console.error("Geolocation error:", error);
-          isUserLocation = false;
-          setCodeCookText("Code");
-          setLocation("Stockholm");
-          setCountry("SE");
-          setFlag("🇸🇪");
-          const weatherData = await getWeatherDataFree(59.3293, 18.0686);
-          console.log("Geolocation error, fallback to Stockholm weather:", weatherData);
-          setWeatherIcon(weatherData.icon);
-          setWeatherTemp(`${weatherData.temp}°`);
-        }
-      );
-    } else {
+    if (!navigator.geolocation) {
       // Keep default Stockholm location
       isUserLocation = false;
       setCodeCookText("Code");
@@ -177,53 +164,154 @@ export default function TimeZoneCard() {
       console.log("Geolocation not supported, Stockholm weather:", weatherData);
       setWeatherIcon(weatherData.icon);
       setWeatherTemp(`${weatherData.temp}°`);
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        setIsSwitching(true);
+        try {
+          console.log("Location accepted, updating...");
+          const { latitude, longitude } = position.coords;
+
+          // Fetch all required data in parallel
+          const [locationName, countryCode, weatherData] = await Promise.all([
+            getLocationName(latitude, longitude),
+            getCountryCode(latitude, longitude),
+            getWeatherDataFree(latitude, longitude),
+          ]);
+
+          // Batch update signals for a single UI change
+          isUserLocation = true;
+          setCodeCookText("Cook");
+          setLocation(locationName);
+          setCountry(countryCode);
+          setFlag(getCountryFlag(countryCode));
+          setWeatherIcon(weatherData.icon);
+          setWeatherTemp(`${weatherData.temp}°`);
+
+          // Determine timezone
+          userTimezone = weatherData.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+          // Update date/time once with the final timezone
+          updateDateTime(userTimezone);
+
+          console.log("Updated values:", {
+            isUserLocation,
+            location: locationName,
+            country: countryCode,
+            flag: getCountryFlag(countryCode),
+            weatherIcon: weatherData.icon,
+            weatherTemp: weatherData.temp,
+            timezone: userTimezone,
+          });
+        } catch (err) {
+          console.error("Error updating user location:", err);
+          // fallback to Stockholm
+          isUserLocation = false;
+          setCodeCookText("Code");
+          setLocation("Stockholm");
+          setCountry("SE");
+          setFlag("🇸🇪");
+          const weatherData = await getWeatherDataFree(59.3293, 18.0686);
+          setWeatherIcon(weatherData.icon);
+          setWeatherTemp(`${weatherData.temp}°`);
+          userTimezone = weatherData.timezone || "Europe/Stockholm";
+          updateDateTime(userTimezone);
+        } finally {
+          setIsSwitching(false);
+        }
+      },
+      async (error) => {
+        console.error("Geolocation error:", error);
+        isUserLocation = false;
+        setCodeCookText("Code");
+        setLocation("Stockholm");
+        setCountry("SE");
+        setFlag("🇸🇪");
+        const weatherData = await getWeatherDataFree(59.3293, 18.0686);
+        console.log("Geolocation error, fallback to Stockholm weather:", weatherData);
+        setWeatherIcon(weatherData.icon);
+        setWeatherTemp(`${weatherData.temp}°`);
+        setIsSwitching(false);
+      }
+    );
   }
 
   onMount(() => {
-    updateDateTime();
+    updateDateTime(userTimezone);
+    // Fetch default Stockholm weather immediately so UI shows it while geolocation resolves
+    (async () => {
+      try {
+        const defaultWeather = await getWeatherDataFree(59.3293, 18.0686);
+        if (defaultWeather) {
+          setWeatherIcon(defaultWeather.icon);
+          setWeatherTemp(`${defaultWeather.temp}°`);
+          // If backend gives a timezone for Stockholm, ensure userTimezone stays consistent
+          if (defaultWeather.timezone) {
+            // Keep default userTimezone as returned (usually Europe/Stockholm)
+            userTimezone = defaultWeather.timezone;
+            updateDateTime(userTimezone);
+          }
+        }
+      } catch (e) {
+        console.error('Error fetching default weather:', e);
+      }
+    })();
+
     getUserLocation();
-    interval = setInterval(updateDateTime, 1000);
+    interval = setInterval(() => updateDateTime(userTimezone), 1000);
   });
 
   onCleanup(() => {
     clearInterval(interval);
   });
- 
+
+  // <span class="text-neutral-100/60 hover:text-neutral-100/100 text-4xl cursor-pointer transition-all duration-300 hover:scale-110 hover:rotate-4 active:scale-110 ml-4 mr-4 mb-1" onClick={() => setShowCountryText(!showCountryText())}>{flag()}</span>
+  //         <span class="text-2xl ml-1 mr-1">{flag()}</span>     <span class="text-2xl mr-1 f-bold">{showFullCountry() ? getCountryName(country()) : country()}</span>
+
   return (
-            <div class={`card group h-full sm:h-auto min-h-40 sm:min-h-auto overflow-visible shadow-lg rounded-lg p-6 border border-darkslate-100 md:hover:border-gray-500 align-start flex-none justify-start relative w-full transition-transform duration-300 ease-in-out col-span-1 lg:col-span-2 md:row-span-2 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02] hover:-translate-y-1 ${isSwitching() ? 'animate-pulse bg-gradient-to-r from-transparent via-white/5 to-transparent' : ''}`}>
-      <div class="grid grid-cols-0 gap-0 h-full">
-        <div class={`flex flex-col gap-0 transition-all duration-300 ${isSwitching() ? 'opacity-70 scale-95' : 'opacity-100 scale-100'}`}>
-          <div class="text-lg md:text-base mb-o flex items-center gap-1">
-            <span class="text-white text-2xl f-bold mr-1 cursor-pointer transition-all duration-300 hover:scale-110 hover:text-blue-300" id="code-cook">{codeCookText()} </span>
-            <span class="text-white text-2xl f-bold mr-1 cursor-pointer">@ </span>
-            <span class="text-white text-2xl f-bold mr-1 cursor-pointer transition-all duration-300 hover:scale-105 hover:text-blue-400 active:scale-95" onClick={toggleLocation}>{location()} {isSwitching() && <span class="inline-block animate-spin ml-1">⟳</span>}</span>
-            <div class="flex items-center whitespace-nowrap" >
-              <span class="text-neutral-100/60 text-2xl cursor-pointer transition-all duration-300 hover:scale-125 hover:rotate-12 active:scale-110" onClick={() => setShowCountryText(!showCountryText())}>
-                {flag()}
-              </span>
-              {showCountryText() && (
-                <span class="text-white text-2xl f-bold text-neutral-100/100 cursor-pointer ml-2 transition-all duration-500 ease-in-out opacity-100 transform translate-x-0 hover:text-yellow-300 animate-fade-in" onClick={() => setShowFullCountry(!showFullCountry())}>
-                  {showFullCountry() ? getCountryName(country()) : country()}
-                </span>
-              )}
+    <div class={`card group h-full sm:h-auto min-h-40 sm:min-h-auto overflow-visible shadow-lg rounded-lg p-6 border border-darkslate-100 md:hover:border-gray-500 align-start flex-none justify-start relative w-full transition-transform duration-300 ease-in-out col-span-1 lg:col-span-2 md:row-span-2 cursor-pointer hover:shadow-green-500/10  ${isSwitching() ? 'animate-pulse bg-gradient-to-r from-transparent via-white/5 to-transparent' : ''}`}  onClick={toggleLocation}>
+      <div class="grid grid-cols-0 gap-0 h-full w-full overflow-hidden">
+        <div class={`flex flex-col gap-0 transition-all duration-300 ${isSwitching() ? 'opacity-80 scale-98 animate pulse' : 'opacity-100 scale-100'}`}>
+          {/* Allow wrapping on small screens: use flex-wrap and remove forced whitespace-nowrap */}
+          <div class="text-lg md:text-base mb-0 flex flex-wrap items-center gap-0">
+            <div class="flex items-center">
+              <span class="text-white text-2xl f-bold cursor-pointer hidden" id="code-cook">{codeCookText()} </span>
+              <span class="text-white text-2xl f-bold ml-1 cursor-pointer hidden">@ </span>
+            </div>
+            <div class="flex-shrink">
+             <button class="text-white text-2xl f-bold mr-1.5 cursor-pointer transition-all duration-300 active:scale-95" onClick={toggleLocation}>
+               {location()} {isSwitching()}
+             </button>
+            </div>
+            <div class="text-neutral-100/100">
+              <span class={`text-white text-2xl f-bold ml-0 cursor-pointer inline-block mr-1.5 ${isSwitching() ? '' : ''}`}>@ </span>
+               <span class="text-2xl ml-0 f-bold break-words">{showFullCountry() ? getCountryName(country()) : country()}</span>
             </div>
           </div>
-          <div class="flex items-start gap-2 flex-wrap md:flex-nowrap mb-4 min-w-0 tracking-wider">
-            <span class="relative top-0 text-neutral-100/60 transition-all duration-300">{weekDay()}, {monthDay()}</span>
-            <span class="text-1xl text-neutral-100/100 transition-all duration-500 ease-in-out hover:scale-110">{weatherIcon()}</span>
-            <span class="text-1xl f-bold text-neutral-100/100 transition-all duration-300 hover:text-blue-300">{weatherTemp()}</span>
+          <div class="flex flex-wrap items-start gap-2 mb-4 min-w-0 tracking">  
+            <div class="min-w-0 mr-o">
+              <span class="relative top-0 text-neutral-100/60 transition-all duration-300">{weekDay()}, {monthDay()}</span>
+            </div>
+            <div class="flex items-center flex-shrink-0 sm:flex-shrink ml-0 sm:ml-0 mt-0 sm:mt-0">
+             <span class="text-1xl text-neutral-100/80">{flag()}</span>
+             <span class="text-1xl text-neutral-100/80 ml-1.5">{weatherIcon()}</span>
+             <span class="text-1xl f-bold text-neutral-100/80 ml-1.5">{weatherTemp()}</span>
+            </div>
           </div>
           <div class="text-xl md:text-lg lg:text-2xl text-neutral-100/90 mt-1 f-bold flex">
             <span>
               <time
                 datetime={currentDate().toISOString()}
-                class="text-4xl md:text-3xl lg:text-5xl flex h-full tracking-widest transition-all duration-300"
+                class="text-4xl md:text-3xl lg:text-5xl flex h-full tracking-wider transition-all duration-300"
               >
                 {timeText()}
               </time>
             </span>
           </div>
+        </div>
+        <div class="text-lg md:text-base mb-o flex items-center centered w-full text-6xl">
         </div>
       </div>
     </div>

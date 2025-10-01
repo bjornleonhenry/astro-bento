@@ -18,7 +18,7 @@ const { title, body, colSpan, rowSpan, href, colorText, height, className } = As
 ---
 
 <div
-  class={`card group h-max sm:h-auto min-h-40 sm:min-h-auto overflow-hidden shadow-lg rounded-lg p-6 border border-darkslate-100 md:hover:border-gray-500 align-start flex-none ${
+  class={`card group h-max sm:h-auto min-h-40 sm:min-h-auto ${className && className.includes('hover:scale') ? 'overflow-visible' : 'overflow-hidden'} shadow-lg rounded-lg p-6 border border-darkslate-100 md:hover:border-gray-500 align-start flex-none ${
     height || "h-full"
   } justify-start relative transform perspective-1200 w-full transition duration-200 ease-in-out col-span-1 ${
     colSpan || "md:col-span-2"
