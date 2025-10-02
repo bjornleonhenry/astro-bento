@@ -1,6 +1,6 @@
 ---
-active: true
-featured: true
+active: false
+featured: false
 pubDate: 2023-07-23T00:00:00Z
 title: Project Nexum Wiki
 description: An open wiki platform built with Sveltekit, Pocketbase, Zod, TinyMCE, TailwindCSS, and DaisyUI.

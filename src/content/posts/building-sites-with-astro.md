@@ -6,7 +6,7 @@ title: Building Sites with Astro
 description: Using Astro to build fast, lean, and modern websites.
 excerpt: Astro is a static site generator that aims to simplify the process of building modern websites. It is built with a focus on developer experience, performance, and flexibility.
 category: now
-image: "/images/astro.webp"
+image: "/images/astro.jpg"
 tags:
   - Astro
   - SSG
@@ -24,6 +24,12 @@ One of the main benefits of using Astro is its ability to provide fast and perfo
 
 Astro also comes with several features out of the box, such as image optimization, code splitting, and automatic font loading, which further improve website performance. It also allows developers to easily integrate with popular frameworks like React and Vue.js, enabling them to build dynamic and interactive websites.
 
+### &nbsp;
+
+![Screenshot 1](/images/astro-1.webp)
+
+### &nbsp;
+
 ## Getting Started
 
 Getting started with Astro is easy, and it provides an intuitive development experience. Astro's documentation is extensive and provides step-by-step instructions for building your first Astro website. You can use the built-in development server to preview your site in real-time and see how changes affect the output. Astro also supports hot reloading, which means that any changes you make to your code will be immediately reflected in the browser without having to refresh the page.
@@ -31,6 +37,12 @@ Getting started with Astro is easy, and it provides an intuitive development exp
 One of the standout features of Astro is its support for server-rendered content. With Astro, you can render content on the server and send it to the client, which can be useful for SEO and performance optimization. This feature is also useful for building websites with dynamic content that need to be updated frequently.
 
 Another notable feature of Astro is its ability to integrate with external data sources. You can use Astro's built-in data fetching APIs to fetch data from a variety of sources, including REST APIs, GraphQL APIs, and even local files. This makes it easy to build websites that display dynamic content that is pulled from external sources.
+
+### &nbsp;
+
+![Screenshot 1](/images/astro-2.webp)
+
+### &nbsp;
 
 ## Conclusion
 

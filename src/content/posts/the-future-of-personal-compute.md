@@ -1,6 +1,6 @@
 ---
-active: true
-featured: true
+active: false
+featured: false
 pubDate: 2024-5-15T12:00:00Z
 title: The Future of Personal Compute
 description: How the future of personal computing will be shaped by AI.

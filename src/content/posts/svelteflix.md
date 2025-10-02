@@ -1,6 +1,6 @@
 ---
-active: true
-featured: true
+active: false
+featured: false
 pubDate: 2023-09-10T00:00:00Z
 title: Svelteflix
 description: A Netflix clone build with Sveltekit and TailwindCSS.

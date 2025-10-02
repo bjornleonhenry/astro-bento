@@ -4,10 +4,37 @@ import PostLayout from "../../layouts/PostLayout.astro";
 
 export const prerender = true;
 
+ 
+
+function isActive(val: unknown) {
+  // missing => treat as active
+  if (val === null || val === undefined) return true;
+  if (typeof val === "boolean") return val; // true => active, false => inactive
+  if (typeof val === "number") return val !== 0; // 0 => inactive
+  if (typeof val === "string") {
+    const v = val.trim().toLowerCase();
+    if (v === "false" || v === "0") return false;
+    return true;
+  }
+  // unknown types -> default to active
+  return true;
+}
+
 export async function getStaticPaths() {
-  return (await getCollection("posts")).map(({ slug }) => ({
-    params: { slug },
-  }));
+  const all = await getCollection("posts");
+  const activePosts = all.filter((post) => {
+    const val = post.data.active;
+    if (val === null || val === undefined) return true;
+    if (typeof val === "boolean") return val;
+    if (typeof val === "number") return val !== 0;
+    if (typeof val === "string") {
+      const v = String(val).trim().toLowerCase();
+      if (v === "false" || v === "0") return false;
+      return true;
+    }
+    return true;
+  });
+  return activePosts.map(({ slug }) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
@@ -16,11 +43,24 @@ if (slug === undefined) {
   throw new Error("slug is missing");
 }
 
-const posts = (await getCollection("posts")).sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
-);
+const posts = (await getCollection("posts"))
+  .filter((post) => {
+    const val = post.data.active;
+    if (val === null || val === undefined) return true;
+    if (typeof val === "boolean") return val;
+    if (typeof val === "number") return val !== 0;
+    if (typeof val === "string") {
+      const v = String(val).trim().toLowerCase();
+      if (v === "false" || v === "0") return false;
+      return true;
+    }
+    return true;
+  })
+  .sort(
+    (blogEntryA, blogEntryB) =>
+      (blogEntryB.data.pubDate || new Date()).getTime() -
+      (blogEntryA.data.pubDate || new Date()).getTime()
+  );
 
 const entry = posts.find((entry) => entry.slug === slug);
 if (entry === undefined) {
@@ -29,7 +69,7 @@ if (entry === undefined) {
 
 const { Content } = await entry.render();
 ---
-
+ 
 {/* @ts-ignore */}
 <PostLayout frontmatter={entry.data}>
   <Content />

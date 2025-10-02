@@ -84,17 +84,14 @@ const GlobeComponent = () => {
       .attr("height", height);
 
     // Read the CSS variable for water color and fall back to white
-    const waterColor =
-      getComputedStyle(document.documentElement).getPropertyValue("--color-water")?.trim() ||
-      "#ffffff";
+    const waterColorRaw = getComputedStyle(document.documentElement).getPropertyValue("--color-water");
+    const waterColor = (waterColorRaw && waterColorRaw.trim()) || "#ffffff";
 
-    const landColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-gray-500")
-      .trim();
+    const landColorRaw = getComputedStyle(document.documentElement).getPropertyValue("--color-gray-500");
+    const landColor = (landColorRaw && landColorRaw.trim()) || "#737373";
 
-    const visitedColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-teal-400")
-      .trim();
+    const visitedColorRaw = getComputedStyle(document.documentElement).getPropertyValue("--color-teal-400");
+    const visitedColor = (visitedColorRaw && visitedColorRaw.trim()) || "#2dd4bf";
 
     svg
       .append("circle")

@@ -24,6 +24,9 @@ const allPosts: CollectionEntry<"posts">[] = await getCollection("posts");
 const pageObjects: Post[] = [];
 
 for (const post of allPosts) {
+  // Skip posts explicitly marked as inactive
+  if (post.data.active === false) continue;
+
   const tags = post.data.tags;
 
   if (Array.isArray(tags)) {

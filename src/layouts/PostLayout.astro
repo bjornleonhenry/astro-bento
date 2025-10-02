@@ -70,7 +70,7 @@ const fmProjectURL = actualFrontmatter.projectURL ?? "";
 
         <div class="flex gap-1 w-full overflow-scroll mb-2">
           {
-            fmTags.map((tag) => (
+            fmTags.map((tag: string) => (
               <a
                 href={`/tags/${formatTag(tag)}`}
                 class="no-underline hover:no-underline text-sm bg-gray-700 text-neutral-100 rounded px-2 py-1 lowercase whitespace-nowrap"
@@ -96,7 +96,7 @@ const fmProjectURL = actualFrontmatter.projectURL ?? "";
     <div class="flex items-center gap-2 w-full py-2">
       {
         fmCategory === 'projects' && (
-          <a href={`https://github.com/bjorn-leon-henry/${slug}`} class="w-full group" target="_blank">
+          <a href={`https://github.com/bjornleonhenry/${slug}`} class="w-full group" target="_blank">
             <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
               <div class="flex items-center justify-between gap-2">
                 <div>go to app</div>
@@ -111,7 +111,7 @@ const fmProjectURL = actualFrontmatter.projectURL ?? "";
       }
       {
         fmCategory === 'projects' && (
-          <a href={`https://github.com/bjorn-leon-henry/${slug}`} class="w-full group" target="_blank"> 
+          <a href={`https://github.com/bjornleonhenry/${slug}`} class="w-full group" target="_blank"> 
             <button class="text-neutral-100 bg-gray-700 md:hover:text-neutral-100 transition-all duration-200 rounded py-2 px-4 flex-1 w-full">
               <div class="flex items-center justify-between gap-2">
                 <div>star on github</div>

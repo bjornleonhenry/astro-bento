@@ -6,7 +6,7 @@ export async function GET({params, request}: {params: any, request: any}) {
   return new Response(
     JSON.stringify({
       msg: 'Hello World!',
-      app: 'bjorn-leon-henry',
+      app: 'bjornleonhenry',
       repository: 'https://github.com/bjornleonhenry/astro-bento',
       version: '1.5.0',
       endpoints: [

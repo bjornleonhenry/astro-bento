@@ -4,11 +4,13 @@ import PostFeedLayout from "../../layouts/PostFeedLayout.astro";
 import "../../styles/global.css";
 import { fade } from "astro:transitions";
 
-const posts = (await getCollection("posts"))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
-);
+const posts = (await getCollection("posts"))
+  ?.filter((post) => post.data.active !== false)
+  .sort(
+    (blogEntryA, blogEntryB) =>
+      (blogEntryB.data.pubDate || new Date()).getTime() -
+      (blogEntryA.data.pubDate || new Date()).getTime()
+  );
 
 // Extract all tags and remove duplicates
 const allTags = posts

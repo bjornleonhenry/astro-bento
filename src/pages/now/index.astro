@@ -5,11 +5,24 @@ import PostItem from "../../components/Post/PostItemV2.astro";
 import "../../styles/global.css";
 import { Icon } from "astro-icon/components";
 
-const posts = (await getCollection("posts"))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
-);
+const posts = (await getCollection("posts"))
+  ?.sort(
+    (blogEntryA, blogEntryB) =>
+      (blogEntryB.data.pubDate || new Date()).getTime() -
+      (blogEntryA.data.pubDate || new Date()).getTime()
+  );
+
+const isActive = (val: unknown) => {
+  if (val === null || val === undefined) return true;
+  if (typeof val === "boolean") return val;
+  if (typeof val === "number") return val !== 0;
+  if (typeof val === "string") {
+    const v = String(val).trim().toLowerCase();
+    if (v === "false" || v === "0") return false;
+    return true;
+  }
+  return true;
+};
 ---
 
 <script>
@@ -60,7 +73,7 @@ const posts = (await getCollection("posts"))?.sort(
       <ul class="">
         {
           posts
-            ?.filter((post) => post.data.category === "now")
+            ?.filter((post) => post.data.category === "now" && isActive(post.data.active))
             .map((post) => (
               <div class="post-item opacity-0">
                 <PostItem

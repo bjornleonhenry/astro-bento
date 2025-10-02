@@ -18,8 +18,8 @@ tags:
   - Workflow
   - Automation
   - Web Scraping
-projectURL: "https://github.com/bjornleonhenry/flow-scrape"
-repoURL: "https://github.com/bjorn-leon-henry/flow-scrape"
+projectURL: "https://flow-scrape.vercel.app"
+repoURL: "https://github.com/bjornleonhenry/flow-scrape"
 ---
 
 ### What's included in flow-scrape?
@@ -37,16 +37,6 @@ Flow Scrape provides a comprehensive platform for creating, managing, and execut
 - [shadcn/ui](https://ui.shadcn.com/): Re-usable components built on Radix UI and Tailwind CSS.
 - [NextAuth.js](https://next-auth.js.org/): Complete open source authentication solution.
 
-## Features
-- Workflow Builder: Drag-and-drop interface to create custom workflows
-- Node-Based Editor: Visual workflow editor with various node types
-- Execution Engine: Run workflows with real-time progress tracking
-- User Authentication: Secure user management with NextAuth.js
-- Billing Integration: Stripe-powered subscription management
-- Credential Management: Secure storage of API keys and credentials
-- Analytics Dashboard: Track workflow performance and usage
-- Responsive Design: Modern UI built with Tailwind CSS and shadcn/ui
-
 ### &nbsp;
 
 ![Screenshot 1](/images/flow-scrape-1.webp)
@@ -56,6 +46,16 @@ Flow Scrape provides a comprehensive platform for creating, managing, and execut
 ![Screenshot 1](/images/flow-scrape-2.webp)
 
 ### &nbsp;
+
+## Features
+- Workflow Builder: Drag-and-drop interface to create custom workflows
+- Node-Based Editor: Visual workflow editor with various node types
+- Execution Engine: Run workflows with real-time progress tracking
+- User Authentication: Secure user management with NextAuth.js
+- Billing Integration: Stripe-powered subscription management
+- Credential Management: Secure storage of API keys and credentials
+- Analytics Dashboard: Track workflow performance and usage
+- Responsive Design: Modern UI built with Tailwind CSS and shadcn/ui
 
 ### Prerequisites
 
