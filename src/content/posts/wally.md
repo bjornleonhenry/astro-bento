@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2024-3-3T00:00:00Z
 title: Wally
 description: A simple, easy-to-use bitcoin wallet generator.

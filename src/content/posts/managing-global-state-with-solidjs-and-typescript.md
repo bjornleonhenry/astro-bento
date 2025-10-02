@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2023-04-13T00:00:00Z
 title: Managing Global State with Solid.js and TypeScript
 description: How to implement global state management using Solid.js and TypeScript.

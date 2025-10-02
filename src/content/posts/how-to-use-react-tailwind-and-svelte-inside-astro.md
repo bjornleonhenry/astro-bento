@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2023-03-18T00:00:00Z
 title: How to use React, Tailwind, and Svelte Inside Astro
 description: How to use React and Svelte components inside Astro with TailwindCSS.

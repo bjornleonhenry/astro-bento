@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2023-03-03T12:00:00Z
 title: X Clone - Social Media Platform
 description: A Twitter-inspired social media platform with real-time features and modern web technologies.

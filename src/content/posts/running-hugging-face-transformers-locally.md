@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2023-08-26T00:00:00Z
 title: Running Hugging Face Transformers Locally
 description: A guide on how to use Hugging Face Transformers to run machine learning models locally.

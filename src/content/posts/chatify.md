@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2020-12-08T12:00:00Z
 title: Full-Stack Chat Application
 description: A full-stack chat application with real-time messaging, authentication, and modern UI components.

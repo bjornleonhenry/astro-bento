@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2022-01-20T12:00:00Z
 title: FullStack Dating Website
 description: A full-stack dating website with Next.js frontend and Prisma backend for modern matchmaking.

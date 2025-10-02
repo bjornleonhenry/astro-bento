@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2023-01-06T00:00:00Z
 title: Using trpc in Next.js
 description: A Beginner's Guide to Building TypeScript-based RPC Services

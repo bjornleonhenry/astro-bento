@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2024-4-12T12:00:00Z
 title: Server Dashboard
 description: A simple server dashboard that displays the CPU and memory usage of the server it is running on. The server is written in Python and the client is written in Svelte.

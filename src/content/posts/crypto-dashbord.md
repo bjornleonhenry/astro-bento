@@ -1,6 +1,6 @@
 ---
 active: true
-featured: true
+featured: false
 pubDate: 2023-03-31T00:00:00Z
 title: Crypto Dashboard
 description: Easily determine the best time to buy or sell your crypto.
