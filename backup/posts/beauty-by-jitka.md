@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2024-6-21T12:00:00Z
 title: Beauty by Jitka
 description: A simple landing page and booking funnel for a medical injector.

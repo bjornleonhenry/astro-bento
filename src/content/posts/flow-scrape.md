@@ -19,7 +19,7 @@ tags:
   - Automation
   - Web Scraping
 projectURL: "https://github.com/bjornleonhenry/flow-scrape"
-repoURL: "https://github.com/bjornleon-henry/flow-scrape"
+repoURL: "https://github.com/bjorn-leon-henry/flow-scrape"
 ---
 
 ### What's included in flow-scrape?

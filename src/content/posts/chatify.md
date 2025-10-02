@@ -3,10 +3,10 @@ active: true
 featured: true
 pubDate: 2020-12-08T12:00:00Z
 title: Full-Stack Chat Application
-description: A modern web application built with cutting-edge technologies.
-excerpt: A modern web application built with cutting-edge technologies.
+description: A full-stack chat application with real-time messaging, authentication, and modern UI components.
+excerpt: A full-stack chat application with real-time messaging, authentication, and modern UI components.
 category: projects
-image: "/images/chatify.png"
+image: "/images/chatify.webp"
 tags:
 - JWT
 - Socket.io
@@ -23,7 +23,7 @@ repoURL: "https://github.com/bjornleonhenry/chatify"
 
 ### What's included in chatify?
 
-A modern web application built with cutting-edge technologies.
+A feature-rich full-stack chat application with JWT authentication, real-time messaging via Socket.io, and a beautiful React interface styled with Tailwind CSS and DaisyUI.
 
 ## Tech Stack
 

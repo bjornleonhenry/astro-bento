@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2023-01-30T00:00:00Z
 title: How product leaders create and manage user perception in today's socially sensitive age
 description: A story of product management and social engineering.

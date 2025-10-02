@@ -3,10 +3,10 @@ active: true
 featured: true
 pubDate: 2023-03-03T12:00:00Z
 title: X Clone - Social Media Platform
-description: A modern web application built with cutting-edge technologies.
-excerpt: A modern web application built with cutting-edge technologies.
+description: A Twitter-inspired social media platform with real-time features and modern web technologies.
+excerpt: A Twitter-inspired social media platform with real-time features and modern web technologies.
 category: projects
-image: "/images/x-clone.svg"
+image: "/images/x-clone.webp"
 tags:
  - Next.js 14
  - TypeScript
@@ -16,12 +16,12 @@ tags:
  - Socket.io
  - UploadThing
 projectURL: "https://x-clone.vercel.app"
-repoURL: "https://github.com/bjornleonhenry/x-clone"
+repoURL: "https://github.com/bjornleonhenry/clone-x"
 ---
 
 ### What's included in x-clone?
 
-A modern web application built with cutting-edge technologies.
+A feature-rich social media platform inspired by Twitter, built with Next.js 14, featuring real-time messaging via Socket.io, authentication with NextAuth.js, and image uploads with UploadThing.
 
 ## Tech Stack
 

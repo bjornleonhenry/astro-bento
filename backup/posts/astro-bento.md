@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2024-5-16T12:00:00Z
 title: Astro Bento
 description: A modern Bentobox UI built with Astro, UnoCSS, Motion, D3, and Markdown.

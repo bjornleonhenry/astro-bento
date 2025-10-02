@@ -5,7 +5,7 @@ pubDate: 2023-01-01T00:00:00Z
 title: Getting started with TailwindCSS in Next.js
 description: A guide to getting started with TailwindCSS in Next.js.
 excerpt: Tailwind CSS is a popular utility-first CSS framework that allows you to rapidly build modern, responsive, and customizable user interfaces.
-image: "images/tailwind.webp"
+image: "/images/getting-started-with-tailwindcss-in-nextjs.webp"
 category: now
 tags:
   - TailwindCSS
@@ -21,6 +21,12 @@ tags:
 # Introduction
 
 Tailwind CSS is a popular utility-first CSS framework that allows you to rapidly build modern, responsive, and customizable user interfaces. Next.js is a popular server-side rendering framework for React applications that provides many features, including server-side rendering, static site generation, and more. Combining Next.js with Tailwind CSS can help you build fast, scalable, and responsive web applications. In this article, we'll walk you through the process of getting started with Tailwind CSS in a Next.js project.
+
+### &nbsp;
+
+![Screenshot 1](/images/getting-started-with-tailwindcss-in-nextjs-2.webp)
+
+### &nbsp;
 
 # Step 1: Create a new Next.js project
 

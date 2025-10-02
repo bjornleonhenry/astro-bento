@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2023-01-02T00:00:00Z
 title: Linktreez
 description: A linktree clone built with Next.js 13 and TailwindCSS.

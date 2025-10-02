@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2023-03-11T00:00:00Z
 title: Building a Next.js Application with Notion as a Backend
 description: Using Notion as a backend for a Next.js application. A Step-by-Step Guide.

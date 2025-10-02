@@ -1,12 +1,12 @@
 ---
-active: true
-featured: true
+active: false
+featured: false
 pubDate: 2020-01-16T12:00:00Z
 title: AI Finance SaaS Platform
-description: A modern web application built with cutting-edge technologies.
-excerpt: A modern web application built with cutting-edge technologies.
+description: An AI-powered financial SaaS platform with React frontend and Node.js backend.
+excerpt: An AI-powered financial SaaS platform with React frontend and Node.js backend.
 category: projects
-image: "/images/ai-financial-saas-platform.svg"
+image: "/images/ai-financial-saas-platform.webp"
 tags:
 - MongoDB
 - Express.js
@@ -20,7 +20,7 @@ repoURL: "https://github.com/bjornleonhenry/ai-financial-saas-platform"
 
 ### What's included in ai-financial-saas-platform?
 
-A modern web application built with cutting-edge technologies.
+An AI-powered financial SaaS platform featuring OpenAI API integration, secure payment processing with Stripe, and a modern React interface.
 
 ## Tech Stack
 

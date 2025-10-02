@@ -64,12 +64,14 @@ import Globe from "../components/Globe";
 
     <ProjectsCard />
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-sm h-full w-full flex items-center sm:justify-center">
+      <div class="w-full h-full cursor-pointer" onclick="window.open('https://bjornleonhenry.com', '_blank')">
+      <p class="text-sm h-full w-full flex items-center sm:justify-center" >
          {new Date().getFullYear()} © <a
           href="https://github.com/bjornleonhenry"
           class="hover:underline ml-1">Bjorn Leon Henry</a
         >.
       </p>
+      </div>
     </Card>
   </main>
 </Layout>

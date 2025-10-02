@@ -5,7 +5,7 @@ pubDate: 2022-12-30T00:00:00Z
 title: Using Pocketbase with SvelteKit
 description: A guide to getting started with Pocketbase and SvelteKit.
 excerpt: Pocketbase is a cloud database service that provides a fast and scalable way to store and manage your application data. SvelteKit is a web application framework that makes it easy to build fast and efficient web applications.
-image: "images/svelte.webp"
+image: "/images/svelte.webp"
 category: now
 tags:
   - Svelte

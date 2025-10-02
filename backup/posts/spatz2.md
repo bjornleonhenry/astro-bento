@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2024-8-24T12:00:00Z
 title: spatz2
 description: A fullstack Sveltekit template for building FAST.

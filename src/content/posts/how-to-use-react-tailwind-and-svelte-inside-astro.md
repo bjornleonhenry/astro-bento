@@ -6,7 +6,7 @@ title: How to use React, Tailwind, and Svelte Inside Astro
 description: How to use React and Svelte components inside Astro with TailwindCSS.
 excerpt: How to use React and Svelte components inside Astro with TailwindCSS.
 category: now
-image: "images/react-tailwind.webp"
+image: "/images/react-tailwind.webp"
 tags:
   - Astro
   - React

@@ -1,12 +1,12 @@
 ---
-active: true
-featured: true
+active: false
+featured: false
 pubDate: 2020-04-07T12:00:00Z
 title: 3D Animated Portfolio Website
-description: A modern web application built with cutting-edge technologies.
-excerpt: A modern web application built with cutting-edge technologies.
+description: An interactive 3D animated portfolio website showcasing modern web development with Three.js.
+excerpt: An interactive 3D animated portfolio website showcasing modern web development with Three.js.
 category: projects
-image: "/images/3d-animated-portfolio.svg"
+image: "/images/3d-animated-portfolio.webp"
 tags:
 - Three.js
 - React
@@ -19,7 +19,7 @@ repoURL: "https://github.com/bjornleonhenry/3d-animated-portfolio"
 
 ### What's included in 3d-animated-portfolio?
 
-A modern web application built with cutting-edge technologies.
+An interactive 3D animated portfolio website built with Three.js, React, and TypeScript, featuring immersive 3D animations and modern web design.
 
 ## Tech Stack
 

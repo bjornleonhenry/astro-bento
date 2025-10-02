@@ -5,7 +5,7 @@ pubDate: 2023-01-10T00:00:00Z
 title: Getting started with the ChatGPT API
 description: A guide to getting started with the ChatGPT API.
 excerpt: As an AI language model, ChatGPT can generate natural language text in response to prompts given to it.
-image: "images/chatgpt.webp"
+image: "/images/chatgpt.webp"
 category: now
 tags:
   - ChatGPT

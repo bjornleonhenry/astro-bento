@@ -83,9 +83,10 @@ const GlobeComponent = () => {
       .attr("width", width)
       .attr("height", height);
 
-    const waterColor = getComputedStyle(document.documentElement)
-      .getPropertyValue("#ffffff")
-      .trim();
+    // Read the CSS variable for water color and fall back to white
+    const waterColor =
+      getComputedStyle(document.documentElement).getPropertyValue("--color-water")?.trim() ||
+      "#ffffff";
 
     const landColor = getComputedStyle(document.documentElement)
       .getPropertyValue("--color-gray-500")

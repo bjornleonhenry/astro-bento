@@ -5,7 +5,7 @@ pubDate: 2023-01-06T00:00:00Z
 title: Using trpc in Next.js
 description: A Beginner's Guide to Building TypeScript-based RPC Services
 excerpt: Trpc is a framework for building TypeScript-based RPC (Remote Procedure Call) services.
-image: "images/trcp-nextjs.webp"
+image: "/images/trcp-nextjs.webp"
 category: now
 tags:
   - Next.js

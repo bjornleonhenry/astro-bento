@@ -1,5 +1,7 @@
 ---
-layout: "../../layouts/PostLayout.astro"
+active: false
+featured: false
+layout:"../../layouts/PostLayout.astro"
 pubDate: 2023-02-01T00:00:00Z
 title: SvelteKit Landing Page with DaisyUI
 description: Using SvelteKit to build a landing page with Daisy UI.

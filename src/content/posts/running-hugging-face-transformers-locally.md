@@ -6,7 +6,7 @@ title: Running Hugging Face Transformers Locally
 description: A guide on how to use Hugging Face Transformers to run machine learning models locally.
 excerpt: Artificial Intelligence and Machine Learning are transforming industries, and one of the key technologies driving this revolution is the transformer architecture.
 category: now
-image: "images/hugs.svg"
+image: "/images/hugs.webp"
 tags:
   - Python
   - AI
@@ -19,9 +19,21 @@ tags:
 
 Artificial Intelligence and Machine Learning are transforming industries, and one of the key technologies driving this revolution is the transformer architecture. Hugging Face has made it incredibly easy to use this architecture with their `transformers` library. This blog post aims to guide you through how to use Hugging Face Transformers to perform various AI and ML tasks, complete with code examples.
 
+### &nbsp;
+
+![Screenshot 1](/images/running-hugging-face-transformers-locally-3.webp)
+
+### &nbsp;
+
 ## Introduction <a name="introduction"></a>
 
 Hugging Face Transformers provides a unified API for multiple NLP tasks, and it's based on the transformer architecture. The library is compatible with both PyTorch and TensorFlow, making it versatile and easy to integrate.
+
+### &nbsp;
+
+![Screenshot 1](/images/running-hugging-face-transformers-locally-1.webp)
+
+### &nbsp;
 
 ## Installation <a name="installation"></a>
 
@@ -124,6 +136,12 @@ output = model.generate(input_ids, max_length=100, num_return_sequences=1)
 generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
 print(generated_text)
 ```
+
+### &nbsp;
+
+![Screenshot 1](/images/running-hugging-face-transformers-locally-4.webp)
+
+### &nbsp;
 
 ## Conclusion <a name="conclusion"></a>
 
