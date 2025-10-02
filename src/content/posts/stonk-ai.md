@@ -1,6 +1,6 @@
 ---
 active: true
-featured: false
+featured: true
 pubDate: 2024-3-3T00:00:00Z
 title: Stonk Ai
 description: A stock market prediction app built with Sveltekit, Python, TensorFlow, TailwindCSS, and DaisyUI.

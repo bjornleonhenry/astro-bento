@@ -26,7 +26,7 @@ tags:
   - Web
   - Git
   - GitHub
-projectURL: "https://stonkai-chat.vercel.app"
+projectURL: "https://stonkbot.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/stonkbot.git"
 ---
 

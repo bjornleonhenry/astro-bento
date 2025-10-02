@@ -1,6 +1,6 @@
 ---
 active: true
-featured: false
+featured: true
 pubDate: 2020-01-15T12:00:00Z
 title: Shadcn Registry
 description: A component registry showcasing modern UI components built with Shadcn/ui and React.

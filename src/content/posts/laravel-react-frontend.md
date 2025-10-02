@@ -1,6 +1,6 @@
 ---
 active: true
-featured: false
+featured: true
 pubDate: 2023-02-22T12:00:00Z
 title: Laravel React Frontend
 description: A modern React frontend application built with TypeScript and Shadcn/ui components.
