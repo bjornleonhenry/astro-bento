@@ -1,6 +1,6 @@
 ---
 active: true
-featured: false
+featured: true
 pubDate: 2024-12-21T12:00:00Z
 title: Spatz
 description: A fullstack Sveltekit template for building FAST.
@@ -23,7 +23,8 @@ tags:
   - Web
   - Git
   - GitHub
-projectURL: "https://github.com/bjornleonhenry/spatz"
+
+projectURL: "https://spatz.vercel.app"
 repoURL: "https://github.com/bjornleonhenry/spatz"
 ---
 

@@ -70,6 +70,7 @@
 
 /* Water color variable for the globe component */
 :root {
-  --color-water: #ffffff;
+  --color-water: #1a1a1a;
+  --color-visit: #22c55e;
 }
 
